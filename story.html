@@ -301,14 +301,16 @@ input, textarea { caret-color: #ff3d68; }
 /* drums must inherit the number's type even where a container styles every span (e.g. stat captions) */
 .odo, .odo span { font-size: inherit !important; color: inherit !important; font-weight: inherit !important; font-family: inherit !important; margin-inline: 0; }
 /* and their layout, even where a container sets display on every span (e.g. story stat captions) */
-.odo { display: inline-flex !important; } .odo-d, .odo-c { display: inline-block !important; } .odo-s, .odo-s > span { display: block !important; }
-.odo { display: inline-flex; direction: ltr; unicode-bidi: isolate; white-space: nowrap; vertical-align: baseline; }
+.odo, .odo-n { display: inline-flex !important; } .odo-d, .odo-c { display: inline-block !important; } .odo-s, .odo-s > span { display: block !important; }
+.odo { display: inline-flex; direction: inherit; unicode-bidi: isolate; white-space: nowrap; vertical-align: baseline; }
+.odo-n { display: inline-flex; direction: ltr; unicode-bidi: isolate; }
+.odo { flex-wrap: wrap; max-width: 100%; } .odo-n { flex-wrap: nowrap; } /* a word and its number may split across lines on narrow cells; the number itself never does */
 .odo-d { display: inline-block; height: 1.12em; line-height: 1.12em; overflow: hidden; vertical-align: top; position: relative; margin-block: -.06em; }
 .odo-s { display: block; will-change: transform; }
 .odo-s > span { display: block; height: 1.12em; text-align: center; }
 .odo-c { display: inline-block; height: 1.12em; line-height: 1.12em; vertical-align: top; margin-block: -.06em; }
 /* split-flap tiles for the hero figure */
-.flap .odo { gap: .06em; align-items: flex-end; }
+.flap .odo, .flap .odo-n { gap: .06em; align-items: flex-end; }
 .flap .odo-d { height: 1em; line-height: 1em; margin: 0; padding: 0 .07em; border-radius: .07em; background: linear-gradient(#211b15 0 49.4%, #120f0c 49.4% 50.6%, #1b1612 50.6%); box-shadow: 0 .03em .06em rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05); }
 .flap .odo-d::after { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 1px; background: rgba(0,0,0,.6); }
 .flap .odo-s > span { height: 1em; }
@@ -330,6 +332,7 @@ window.Scoreboard = (() => {
   const LOOPS = 3; // each drum holds 0-9 three times so low digits can spin past
 
   // Turn the leading text of el into digit drums showing the final value.
+  // Numbers become LTR runs of drums; words around them stay whole, in the surrounding direction.
   function build(el) {
     if (el.dataset.odo) return;
     let node = [...el.childNodes].find((n) => n.nodeType === 3 && /\d/.test(n.nodeValue));
@@ -337,17 +340,25 @@ window.Scoreboard = (() => {
     const text = node.nodeValue, wrap = document.createElement('span');
     wrap.className = 'odo'; wrap.setAttribute('aria-label', text.trim());
     const drums = [];
-    for (const ch of text) {
-      if (/\d/.test(ch)) {
-        const d = document.createElement('span'), s = document.createElement('span');
-        d.className = 'odo-d'; d.setAttribute('aria-hidden', 'true'); s.className = 'odo-s';
-        for (let k = 0; k < LOOPS * 10; k++) { const c = document.createElement('span'); c.textContent = k % 10; s.appendChild(c); }
-        const target = (LOOPS - 1) * 10 + +ch;
-        s.style.transform = `translateY(${-target / (LOOPS * 10) * 100}%)`;
-        d.appendChild(s); wrap.appendChild(d); drums.push({ s, target });
+    for (const run of text.match(/[\d][\d,.:]*\d|\d|[^\d]+/g) || []) {
+      if (/\d/.test(run)) {
+        const num = document.createElement('span'); num.className = 'odo-n'; num.setAttribute('aria-hidden', 'true');
+        for (const ch of run) {
+          if (/\d/.test(ch)) {
+            const d = document.createElement('span'), s = document.createElement('span');
+            d.className = 'odo-d'; s.className = 'odo-s';
+            for (let k = 0; k < LOOPS * 10; k++) { const c = document.createElement('span'); c.textContent = k % 10; s.appendChild(c); }
+            const target = (LOOPS - 1) * 10 + +ch;
+            s.style.transform = `translateY(${-target / (LOOPS * 10) * 100}%)`;
+            d.appendChild(s); num.appendChild(d); drums.push({ s, target });
+          } else {
+            const c = document.createElement('span'); c.className = 'odo-c'; c.textContent = ch; num.appendChild(c);
+          }
+        }
+        wrap.appendChild(num);
       } else {
-        const c = document.createElement('span'); c.className = 'odo-c'; c.setAttribute('aria-hidden', 'true');
-        c.textContent = ch === ' ' ? ' ' : ch; wrap.appendChild(c);
+        const c = document.createElement('span'); c.className = 'odo-c odo-w'; c.setAttribute('aria-hidden', 'true');
+        c.textContent = run.replace(/ /g, '\u00a0'); wrap.appendChild(c);
       }
     }
     node.replaceWith(wrap);
