@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>תמיד תהיה לנו פריז ומילנו</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=Frank+Ruhl+Libre:wght@400;500;700&family=IBM+Plex+Sans+Hebrew:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Secular+One&family=Rubik:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* STORY TEMPLATE. Copy this file, replace every EXAMPLE block with the real group, keep the components.
+   The double-brace labels are filled by build.py from the chosen writing style (presets.json voices[...].story); you may also hard-code them.
+   Colors are authored in the default palette; build.py --story re-themes them to match the report.
+   Layout: a tabloid investigation in one RTL reading column — condensed headlines, serif body, case-file cards per member, orange only for marks and numbers. Dark by design, same world as the stats report. */
+:root {
+  --ink: #fff3df;
+  --panel: #ffffff;
+  --panel-2: #ffe9c7;
+  --line: #ecd7b4;
+  --cream: #1f1235;
+  --soft: #5d4b6b;
+  --orange: #ff3d68;
+  --ember: #c0123f;
+  --display: "Karantina", "Arial Narrow", "Heebo", sans-serif;
+  --serif: "Frank Ruhl Libre", "David", "Times New Roman", serif;
+  --ui: "IBM Plex Sans Hebrew", "Heebo", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body { background: var(--ink); color: var(--cream); font-family: var(--serif); font-size: 19px; line-height: 1.75; direction: rtl; -webkit-font-smoothing: antialiased; }
+.wrap { max-width: 760px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wide { max-width: 1040px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: .92; margin: 0; text-wrap: balance; }
+p { margin: 0 0 1.1em; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; font-size: .88em; }
+b, strong { color: var(--ember); font-weight: 700; }
+a { color: var(--ember); }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+
+.mast { border-bottom: 1px solid var(--line); padding-block: 18px; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--soft); text-transform: uppercase; }
+.mast .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.mast .stamp { color: var(--orange); }
+
+.hero { padding-block: 56px 32px; }
+.kicker { font-family: var(--ui); font-size: 14px; font-weight: 600; color: var(--ink); background: var(--orange); display: inline-block; padding: 3px 12px; border-radius: 3px; letter-spacing: .02em; }
+.hero h1 { font-size: calc(clamp(60px, 11vw, 124px) * var(--ds, 1)); margin-top: 20px; }
+.hero h1 em { font-style: normal; color: var(--orange); }
+.deck { font-family: var(--ui); font-size: clamp(19px, 2.4vw, 23px); line-height: 1.5; color: var(--soft); margin-top: 22px; max-width: 40ch; }
+.byline { font-family: var(--ui); font-size: 13px; color: var(--soft); margin-top: 26px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.byline i { width: 30px; height: 30px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--ember), var(--orange) 55%, #c0123f); display: inline-block; }
+
+.lead::first-letter { font-family: var(--display); float: right; font-size: calc(112px * var(--ds, 1)); line-height: .75; margin: 8px 0 0 12px; color: var(--orange); }
+article section { padding-block: 40px 10px; }
+article h2 { font-size: calc(clamp(44px, 7vw, 68px) * var(--ds, 1)); margin-bottom: 18px; }
+article h2 small { display: block; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; color: var(--orange); margin-bottom: 10px; font-weight: 400; }
+
+blockquote { margin: 28px 0; padding: 0 22px 0 0; border-right: 3px solid var(--orange); }
+blockquote p { font-family: var(--ui); font-size: 20px; line-height: 1.5; margin: 0 0 6px; color: var(--cream); }
+blockquote cite { font-family: var(--ui); font-style: normal; font-size: 13px; color: var(--soft); }
+.pull { font-family: var(--display); font-size: calc(clamp(46px, 8vw, 84px) * var(--ds, 1)); line-height: .95; color: var(--orange); margin: 36px 0; text-wrap: balance; }
+.pull span { color: var(--cream); }
+
+.big { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 28px 0; font-family: var(--ui); }
+.big div { background: var(--ink); padding: 16px 18px; }
+.big b { display: block; font-family: var(--display); font-size: calc(54px * var(--ds, 1)); line-height: 1; color: var(--cream); font-weight: 700; }
+.big span { font-size: 13px; color: var(--soft); line-height: 1.4; display: block; }
+
+.files { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin-top: 24px; }
+.file { background: var(--panel); border: 1px solid var(--line); border-radius: 4px 18px 18px 18px; padding: 20px 22px 22px; font-family: var(--ui); font-size: 15px; line-height: 1.6; display: grid; gap: 10px; align-content: start; position: relative; }
+.file .tab { position: absolute; top: -1px; right: 22px; transform: translateY(-100%); background: var(--panel); border: 1px solid var(--line); border-bottom: none; border-radius: 8px 8px 0 0; padding: 2px 12px; font-family: var(--mono); font-size: 11px; color: var(--orange); letter-spacing: .1em; }
+.file h3 { font-size: calc(40px * var(--ds, 1)); color: var(--cream); }
+.file .alias { font-family: var(--display); font-size: calc(26px * var(--ds, 1)); line-height: 1; color: var(--orange); }
+.file .ev { display: flex; align-items: baseline; gap: 10px; border-block: 1px dashed var(--line); padding-block: 10px; }
+.file .ev b { font-family: var(--display); font-size: calc(44px * var(--ds, 1)); line-height: .9; color: var(--cream); }
+.file .ev span { color: var(--soft); font-size: 13px; line-height: 1.35; }
+.file q { display: block; quotes: none; color: var(--cream); border-right: 2px solid var(--orange); padding-right: 12px; }
+.file q + small { color: var(--soft); font-size: 12px; margin-top: -6px; }
+.file .verdict { color: var(--soft); font-size: 14px; }
+.file .verdict strong { color: var(--orange); }
+
+.diag { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 26px 26px 18px; margin-top: 18px; font-family: var(--ui); font-size: 16px; }
+.diag h3 { font-size: calc(40px * var(--ds, 1)); margin-bottom: 12px; }
+.diag ol { margin: 0; padding: 0 22px 0 0; display: grid; gap: 10px; }
+.diag li::marker { color: var(--orange); font-family: var(--mono); }
+.sig { font-family: var(--mono); font-size: 12px; color: var(--soft); margin-top: 16px; border-top: 1px dashed var(--line); padding-top: 12px; }
+
+.cta { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border: 1px solid var(--orange); border-radius: 18px; padding: 20px 24px; margin-block: 50px 20px; font-family: var(--ui); }
+.cta a { background: var(--orange); color: var(--ink); text-decoration: none; padding: 10px 20px; border-radius: 99px; font-weight: 600; }
+footer { padding-block: 30px 60px; font-family: var(--ui); font-size: 13px; color: var(--soft); }
+footer .wrap { border-top: 1px solid var(--line); padding-top: 22px; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .file { transition: transform .45s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .45s cubic-bezier(.16,1,.3,1); }
+  .file:hover { transform: translateY(-4px); border-color: #ff3d6855; box-shadow: 0 18px 40px -18px rgba(0,0,0,.8); }
+  .file:hover .tab { border-color: #ff3d6855; }
+  .cta a { transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s; }
+  .cta a:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px #ff3d68; }
+}
+@media (max-width: 560px) { body { font-size: 18px; } .lead::first-letter { font-size: 84px; } .file h3 { font-size: 34px; } }
+</style>
+<style>
+/* Shared base for every light skin: loaded before the skin's own file. */
+:root { color-scheme: light; }
+html, body { background: var(--ink); }
+::selection { background: var(--orange); color: #fff; }
+html { scrollbar-color: var(--line) var(--ink); }
+#tip { background: var(--cream); color: var(--panel); border-color: transparent; box-shadow: 0 8px 20px -10px rgba(0,0,0,.35); }
+.row .bar, .mrow .bar { background: var(--panel-2); }
+.chip { background: color-mix(in srgb, var(--orange) 10%, var(--panel)); color: var(--ember); border-color: color-mix(in srgb, var(--orange) 28%, transparent); }
+.pod.first { border-color: color-mix(in srgb, var(--orange) 45%, transparent); background: linear-gradient(to bottom, color-mix(in srgb, var(--orange) 10%, var(--panel)), var(--panel)); }
+.card { background: var(--panel); }
+.statrow > div { background: var(--panel); }
+.day.quiet { background: transparent; }
+.lead::first-letter, b, strong { color: var(--orange); }
+.byline i { background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--orange) 40%, #fff), var(--orange) 60%, var(--ember)); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover, .award:hover, .day:hover, .tile:hover, .bond:hover, .emojis > div:hover, .file:hover {
+    box-shadow: 0 16px 32px -18px color-mix(in srgb, var(--cream) 45%, transparent);
+    border-color: color-mix(in srgb, var(--orange) 45%, var(--line));
+  }
+}
+
+/* FRIENDS: sticker-pop. Hot paper, black outlines with hard offset shadows (a deliberate neobrutalist world), a different candy color per card. */
+:root {
+  --display: "Secular One", "Rubik", system-ui, sans-serif;
+  --body: "Rubik", "Assistant", system-ui, sans-serif;
+  --ui: "Rubik", "Assistant", system-ui, sans-serif;
+  --serif: "Rubik", system-ui, sans-serif;
+  --ds: .7;
+  --pop1: #ffe1e8; --pop2: var(--accent2, #fff0b3); --pop3: #d6f5ec; --pop4: #e6dcff;
+}
+body { font-size: 16px; }
+h1, h2, h3 { font-weight: 400; letter-spacing: 0; line-height: 1.02; }
+.hero h1 span, .hero h1 em { color: var(--orange); }
+h2 em { color: var(--cream); background: var(--pop2); padding: 0 .18em; border-radius: 8px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.bignum .n { font-size: calc(clamp(96px, 20vw, 220px) * .66); display: inline-block; transform: rotate(-2deg); }
+.eyebrow { display: inline-block; background: var(--cream); color: var(--panel); padding: 3px 10px; border-radius: 6px; letter-spacing: .04em; font-family: var(--ui); font-weight: 700; }
+.panel, .day, .tile, .award, .card, .bond, .emojis > div, .pod, .file, .diag, .cta {
+  background: var(--panel); border: 2.5px solid var(--cream); border-radius: 18px; box-shadow: 5px 5px 0 var(--cream);
+}
+.statrow { border: 2.5px solid var(--cream); box-shadow: 5px 5px 0 var(--cream); background: var(--cream); gap: 2.5px; border-radius: 18px; }
+.award:nth-child(4n+1), .day:nth-child(4n+1), .file:nth-child(4n+1) { background: var(--pop1); }
+.award:nth-child(4n+2), .day:nth-child(4n+2), .file:nth-child(4n+2) { background: var(--pop2); }
+.award:nth-child(4n+3), .day:nth-child(4n+3), .file:nth-child(4n+3) { background: var(--pop3); }
+.award:nth-child(4n), .day:nth-child(4n), .file:nth-child(4n) { background: var(--pop4); }
+.award:nth-child(odd) { transform: rotate(-.8deg); } .award:nth-child(even) { transform: rotate(.8deg); }
+.award .ttl { color: var(--cream); }
+.award .ic { color: var(--cream); opacity: .5; }
+.chip { background: var(--panel); color: var(--cream); border: 1.5px solid var(--cream); }
+.row { border-bottom: 2px dashed color-mix(in srgb, var(--cream) 18%, transparent); }
+.row .bar { height: 14px; border: 2px solid var(--cream); background: var(--panel); }
+.row .bar i, .mrow .bar i { background: var(--orange); border-radius: 0; }
+.row:nth-child(3n+2) .bar i { background: #ffb800; } .row:nth-child(3n) .bar i { background: #6c2bd9; }
+.card .spark i { background: color-mix(in srgb, var(--orange) 35%, var(--panel)); }
+.card .spark i.pk { background: var(--orange); }
+.card .rank { color: var(--orange); }
+.pod.first { background: var(--pop2); }
+.more { background: var(--orange); color: #fff; border: 2.5px solid var(--cream); box-shadow: 3px 3px 0 var(--cream); font-weight: 700; }
+.file .tab { border: 2.5px solid var(--cream); border-bottom: 0; background: var(--panel); color: var(--cream); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover, .award:hover, .day:hover, .tile:hover, .bond:hover, .emojis > div:hover, .file:hover { transform: translate(-3px, -3px) rotate(0deg); box-shadow: 8px 8px 0 var(--cream); border-color: var(--cream); }
+}
+/* story */
+.mast { background: var(--orange); color: #fff; border: 0; }
+.mast .stamp { color: var(--cream); }
+.kicker { background: var(--cream); color: var(--panel); border-radius: 6px; transform: rotate(-2deg); display: inline-block; }
+blockquote { border-right: 0; background: var(--pop2); border-radius: 14px; padding: 14px 18px; }
+.cta a { background: var(--cream); color: var(--panel); }
+.diag li::marker { color: var(--orange); }
+
+</style>
+
+<div class="mast"><div class="wrap wide"><span>תמיד תהיה לנו פריז ומילנו · טור רכילות</span><span class="stamp">בלעדי · לא לפרסום</span></div></div>
+
+<header class="hero"><div class="wrap">
+  <span class="kicker">בלעדי</span>
+  <h1>כמעט תשע שנים, ארבעה חברים, <em>ושאלה אחת שאף פעם לא נענתה: ״פנויים?״</em></h1>
+  <p class="deck">קראנו את כל 9,145 ההודעות של ״תמיד תהיה לנו פריז ומילנו״. הטיולים, התיאומים, החבית. מה שהם לא סיפרו לכם, ועכשיו גם לא יוכלו להכחיש.</p>
+  <div class="byline"><i aria-hidden="true"></i><span>מאת קלוד, כתב הרכילות שלנו · 24 באוקטובר 2026 · זמן קריאה: פחות מהזמן שלוקח לקבוע איתם ערב</span></div>
+</div></header>
+
+<article>
+<div class="wrap">
+  <p class="lead">יש קבוצות שמדברות כל היום. זו לא אחת מהן. ב־617 ימים מתוך 3,228 נכתבה בה לפחות הודעה אחת, כלומר בערך ארבעה מכל חמישה ימים הקבוצה שותקת. ואז מישהו מזכיר טיסה, ותוך שעה יש 100 הודעות, שלושה קישורים לבוקינג ודיון רציני על טרולי.</p>
+  <p>מקורבים לקבוצה מספרים שהכל התחיל בדצמבר 2017, עם טלפון אחד ממנכ״ל של חברת נסיעות. לא, זה לא נגמר שם.</p>
+</div>
+
+<section><div class="wrap">
+  <h2><small>בלעדי</small>ארבע דקות ותיוג אחד</h2>
+  <p>21 בדצמבר 2017, 13:43. ההודעה הראשונה בקבוצה, על משחק אחד שצריך לתכנן: מדריד או פריז. ארבע דקות אחר כך, כבר נקבע מי הבעיה:</p>
+  <blockquote><p>הוא הבעייתי 🙂</p><cite>עידן חמי, 21.12.2017, 13:47, על יניב</cite></blockquote>
+  <blockquote><p>הוא יבטל</p><cite>Yuval, 21.12.2017, 13:47, אותה דקה</cite></blockquote>
+  <p>שלוש דקות אחר כך הגיעה התגובה מהנאשם: ״אני לא יכול מדריד״. הדיון נסגר, הנסיעה יצאה לפריז, ומכאן כנראה גם השם של הקבוצה.</p>
+  <p>ועכשיו הטוויסט שאף אחד לא ראה מגיע. תשע שנים אחר כך, מי שמנסה הכי הרבה לקבוע את המפגשים הוא לא אחר מאשר ״הבעייתי״ עצמו.</p>
+  <p class="pull">17 <span>הודעות של יניב עם ״פנוי״ וסימן שאלה.</span></p>
+  <p>המילה ״פנוי״ הופיעה 74 פעמים בקבוצה, ו־41 מהן שייכות ליניב. הנה דוגמה מייצגת, אחרי ניסיון תיאום שלא צלח:</p>
+  <blockquote><p>טוב טוב, בואו נדבר על דברים מציאותיים יותר / פנויים מחר או בשלישי ערב?</p><cite>יניב שחר, 28.9.2025</cite></blockquote>
+  <p>ומהצד השני של המתרס, ההגנה עדיין מחזיקה בגרסה של 2017:</p>
+  <blockquote><p>סגור לנו במוצש / זה בטח הערב היחידי שיניב פנוי</p><cite>Yuval, 19.7.2026</cite></blockquote>
+</div></section>
+
+<section><div class="wrap">
+  <h2><small>בלעדי</small>תמיד יהיו לנו מזוודות</h2>
+  <p>השקט נשבר רק כשיש טיסה. ב־2018 פריז, ב־2022 מילאנו (המילה הופיעה 58 פעמים באותה שנה), ובינואר 2023 איטליה. ב־15 בינואר 2023 נכתבו 138 הודעות, השיא של הקבוצה, ורובן תמונות מבולוניה, צ׳ינקווה טרה ופורטופינו.</p>
+  <p>אבל הרגע הגדול באמת היה לפני מילאנו, בדיון הלוגיסטי שהקבוצה עוד מדברת עליו בחדרי חדרים:</p>
+  <blockquote><p>אני בא עם טרולי ואז כל טרולי שלכם נספר כמזוודה במקרה הכי גרוע. / אפשר גם לקחת מזוודא גדולה אחת ותשימו דברים יחד. לשיקולכם.</p><cite>עידן חמי, 29.11.2022. שני צוחקים. החשבון של המזוודות עדיין פתוח.</cite></blockquote>
+</div></section>
+
+<section><div class="wrap wide">
+  <div class="wrap" style="padding:0">
+    <h2><small>בלעדי</small>מי מי בקבוצה</h2>
+    <p>השמות שכולם מדברים עליהם, ומה שהם לא רוצים שתדעו (על ההרגלים שלהם בוואטסאפ, כמובן).</p>
+  </div>
+  <div class="files">
+
+    <div class="file"><span class="tab">בלעדי</span>
+      <h3>יניב שחר</h3><div class="alias">מהבעייתי למארגן</div>
+      <div class="ev"><b>309</b><span>שיחות נפתחו על ידי יניב, 38% מכל 811 השיחות. וגם 314 פעמים המילה האחרונה לפני שקט.</span></div>
+      <p>39% מכל ההודעות בקבוצה, ״יופי״ ב־25 מתוך 32 הפעמים שהמילה נכתבה, ו״זורם״ ב־43 מתוך 72. ובליל 16 בפברואר 2026, בין 23:29 ל־00:02: 50 הודעות ברצף, כולן תמונות וסרטונים, בלי מילה אחת. מקורבים טוענים שזה היה אלבום. אחרים טוענים שזה היה מסר.</p>
+      <q>בקרוב נהיה בעלים של חבית וויסקי</q><small>יניב שחר, 18.8.2025. החבית טרם אותרה.</small>
+      <q>אני כבר שעתיים לא עושה כלום / וגם בשעתיים הבאות כנראה</q><small>יניב שחר, 18.8.2025, אותו יום. אולי זו הסיבה.</small>
+    </div>
+
+    <div class="file"><span class="tab">בלעדי</span>
+      <h3>Yuval</h3><div class="alias">השגרירות של קלוד</div>
+      <div class="ev"><b>10</b><span>מתוך 11 ההודעות בקבוצה שמזכירות את קלוד.</span></div>
+      <p>157 לינקים, חצי מכל 312 הלינקים בקבוצה. מקום ראשון ב״בעיה״ (30 פעמים) וב״מזל טוב״ (16). ופרט שנחשף כאן לראשונה: האימוג׳ים המובילים של Yuval הם 🚇 ו־🚉, וכולם הגיעו מהודעה אחת. פוסט טיפים על לונדון שהועבר ב־24 בדצמבר 2018, באורך 1,037 מילים, ההודעה הארוכה בתולדות הקבוצה.</p>
+      <q>אני יודע שחפרתי לכם על קלוד פה לא מעט-אתם פשוט לא מבינים את היכולות שלו</q><small>Yuval, 19.3.2026. הכתבה הזאת נכתבה על ידי קלוד. אין קשר.</small>
+    </div>
+
+    <div class="file"><span class="tab">בלעדי</span>
+      <h3>עידן חמי</h3><div class="alias">סוכנות הנסיעות</div>
+      <div class="ev"><b>19</b><span>מתוך 29 ההודעות עם קובץ PDF בקבוצה. כרטיסים, מסלולים, הזמנות.</span></div>
+      <p>ההודעה הראשונה בקבוצה, השיחה עם מנכ״ל חברת הנסיעות, הייתה של עידן. מאז, ״בודק״ הופיע 30 פעמים בקבוצה, ו־16 מהן אצל עידן. זמן התגובה החציוני: 274 שניות, האיטי בקבוצה. מקורבים מסבירים: בודקים.</p>
+      <q>בודק וחוזר אליכם</q><small>עידן חמי, 23.5.2021, ושוב מילה במילה ב־12.9.2021.</small>
+    </div>
+
+    <div class="file"><span class="tab">בלעדי</span>
+      <h3>משה נחמד עבאדי</h3><div class="alias">הקהל באולפן</div>
+      <div class="ev"><b>13</b><span>מתוך 13. כל ה־😏 שנשלחו אי פעם בקבוצה.</span></div>
+      <p>66% מכל ה־👍 בקבוצה (71 מתוך 108), 70% מכל ה״חחח״ (37 מתוך 53), ו־72 צחוקים בסך הכל, מקום ראשון. 3.7 מילים בממוצע להודעה, הקצר בקבוצה. גילוי בלעדי: עד אוגוסט 2021 השם בקבוצה היה Moshe Nechmad, ומספטמבר 2021 בעברית. לפי המספרים, אותו קהל נאמן.</p>
+      <q>משועממים?</q><small>משה נחמד עבאדי, 18.8.2025, באמצע דיון על חבית וויסקי. מילה אחת. לא היה צריך יותר.</small>
+    </div>
+
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><small>בלעדי</small>מתי הם באמת מדברים</h2>
+  <div class="big">
+    <div><b>שני 10:00</b><span>השעה העמוסה בשבוע. באמצע יום עבודה. לא נאמר יותר.</span></div>
+    <div><b>549</b><span>הודעות בכל השבתות ביחד, הכי מעט מכל ימי השבוע.</span></div>
+    <div><b>1,395</b><span>תשובות הדדיות תוך 5 דקות בין Yuval ליניב. הזוג החם של הקבוצה.</span></div>
+    <div><b>109</b><span>ימים בלי אף הודעה, מסוף מאי עד אמצע ספטמבר 2019. השקט הארוך ביותר.</span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><small>בלעדי</small>מי בא ומי מבריז</h2>
+  <p>ב־2025 נשבר שיא ההברזות: 19 אזכורים, מול 31 אזכורים של מפגשים. כלומר, על כל שני ניסיונות לקבוע, יותר מהברזה אחת. במערכת לא מופתעים.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2><small>סיכום</small>השורה התחתונה</h2>
+  <p>אחרי תשע שנים, הקבוצה הזו היא לא קבוצת וואטסאפ. היא סוכנות נסיעות עם מחלקת לוגיסטיקה, מחלקת תיאומים, שגרירות טכנולוגית וקהל קבוע. חסר רק דבר אחד: תאריך.</p>
+  <div class="diag">
+    <h3>מה צפוי בעונה הבאה</h3>
+    <ol>
+      <li>״פנויים?״ מיניב מקבל תשובה באותו יום. ״הבעייתי״ כבר מזמן לא בעייתי, ויש לזה תיעוד.</li>
+      <li>״בודק וחוזר אליכם״ תקף ל־24 שעות. אחר כך עידן מאשר אוטומטית.</li>
+      <li>Yuval רשאי לשלוח הודעה אחת על קלוד בשבוע. הכתבה הזאת לא נספרת.</li>
+      <li>משה מתבקש להחליף 👍 אחד בחודש במשפט שלם. מותר לסיים ב־😏.</li>
+      <li>החבית: מחכים לעדכון. בינתיים, טרולי אחד לכל אחד.</li>
+      <li>היעד הבא כבר ידוע. תמיד תהיה לכם פריז. רק צריך שכולם יהיו פנויים.</li>
+    </ol>
+    <div class="sig">קלוד. מקורות לא נחשפים</div>
+  </div>
+</div></section>
+
+<div class="wrap">
+  <div class="cta"><span>כל המספרים, כל הטיולים וכל ההודעות מאז 2017, בדוח המלא.</span><a href="index.html">לכל הנתונים</a></div>
+</div>
+</article>
+
+<footer><div class="wrap">כל הציטוטים לקוחים מהקבוצה כפי שנכתבו, עם התאריך. המספרים מחושבים על כל 9,145 ההודעות מ־21.12.2017 עד 22.10.2026. ההערות של הטור הן בדיחות. החברות אמיתית.</div></footer>
+
+<script>window.SB_EASE = "cubic-bezier(.34,1.45,.64,1)";</script>
+<!-- Scoreboard motion layer, shared by the report and the story page.
+     Numbers render final at rest; when they scroll into view each digit drum spins and settles left to right.
+     Anything marked [data-fill] (bars) grows in, [data-draw] (SVG lines) draws in. Reduced motion: nothing moves. -->
+<style>
+::selection { background: #ff3d68; color: #fff3df; }
+html { scrollbar-color: #ecd7b4 #fff3df; }
+input, textarea { caret-color: #ff3d68; }
+/* drums must inherit the number's type even where a container styles every span (e.g. stat captions) */
+.odo, .odo span { font-size: inherit !important; color: inherit !important; font-weight: inherit !important; font-family: inherit !important; margin-inline: 0; }
+/* and their layout, even where a container sets display on every span (e.g. story stat captions) */
+.odo { display: inline-flex !important; } .odo-d, .odo-c { display: inline-block !important; } .odo-s, .odo-s > span { display: block !important; }
+.odo { display: inline-flex; direction: ltr; unicode-bidi: isolate; white-space: nowrap; vertical-align: baseline; }
+.odo-d { display: inline-block; height: 1.12em; line-height: 1.12em; overflow: hidden; vertical-align: top; position: relative; margin-block: -.06em; }
+.odo-s { display: block; will-change: transform; }
+.odo-s > span { display: block; height: 1.12em; text-align: center; }
+.odo-c { display: inline-block; height: 1.12em; line-height: 1.12em; vertical-align: top; margin-block: -.06em; }
+/* split-flap tiles for the hero figure */
+.flap .odo { gap: .06em; align-items: flex-end; }
+.flap .odo-d { height: 1em; line-height: 1em; margin: 0; padding: 0 .07em; border-radius: .07em; background: linear-gradient(#211b15 0 49.4%, #120f0c 49.4% 50.6%, #1b1612 50.6%); box-shadow: 0 .03em .06em rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05); }
+.flap .odo-d::after { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 1px; background: rgba(0,0,0,.6); }
+.flap .odo-s > span { height: 1em; }
+.flap .odo-c { height: 1em; line-height: 1em; margin: 0; color: #ff3d68 !important; }
+#matchclock { position: fixed; top: env(safe-area-inset-top, 0px); inset-inline: 0; height: 3px; z-index: 20; background: linear-gradient(to left, #ff3d68, #c0123f); transform-origin: right; transform: scaleX(0); pointer-events: none; }
+@supports not (animation-timeline: scroll()) { #matchclock { display: none; } }
+@supports (animation-timeline: scroll()) {
+  #matchclock { animation: clockfill linear both; animation-timeline: scroll(root); }
+  @keyframes clockfill { to { transform: scaleX(1); } }
+}
+@media (prefers-reduced-motion: reduce) { #matchclock { display: none; } }
+</style>
+<div id="matchclock" aria-hidden="true"></div>
+<script>
+window.Scoreboard = (() => {
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DRUM = 'cubic-bezier(.16,1,.3,1)';            // drums never overshoot: they'd show digits past the end
+  const EASE = window.SB_EASE || DRUM;                   // bars and lines may bounce (skin choice)
+  const LOOPS = 3; // each drum holds 0-9 three times so low digits can spin past
+
+  // Turn the leading text of el into digit drums showing the final value.
+  function build(el) {
+    if (el.dataset.odo) return;
+    let node = [...el.childNodes].find((n) => n.nodeType === 3 && /\d/.test(n.nodeValue));
+    if (!node) return;
+    const text = node.nodeValue, wrap = document.createElement('span');
+    wrap.className = 'odo'; wrap.setAttribute('aria-label', text.trim());
+    const drums = [];
+    for (const ch of text) {
+      if (/\d/.test(ch)) {
+        const d = document.createElement('span'), s = document.createElement('span');
+        d.className = 'odo-d'; d.setAttribute('aria-hidden', 'true'); s.className = 'odo-s';
+        for (let k = 0; k < LOOPS * 10; k++) { const c = document.createElement('span'); c.textContent = k % 10; s.appendChild(c); }
+        const target = (LOOPS - 1) * 10 + +ch;
+        s.style.transform = `translateY(${-target / (LOOPS * 10) * 100}%)`;
+        d.appendChild(s); wrap.appendChild(d); drums.push({ s, target });
+      } else {
+        const c = document.createElement('span'); c.className = 'odo-c'; c.setAttribute('aria-hidden', 'true');
+        c.textContent = ch === ' ' ? ' ' : ch; wrap.appendChild(c);
+      }
+    }
+    node.replaceWith(wrap);
+    el.dataset.odo = '1';
+    el._drums = drums;
+  }
+
+  function spin(el, delay = 0) {
+    if (calm || !el._drums) return;
+    // every drum spins up from 0 through two full turns; left drums settle first, like a scoreboard locking in
+    const pct = (k) => `translateY(${-k / (LOOPS * 10) * 100}%)`;
+    el._drums.forEach(({ s, target }, i) => {
+      s.animate([{ transform: pct(0), filter: 'blur(1.5px)' }, { offset: .7, filter: 'blur(.6px)' }, { transform: pct(target), filter: 'blur(0)' }],
+        { duration: 950 + i * 120, delay, easing: DRUM, fill: 'backwards' });
+    });
+  }
+
+  function fill(el, delay = 0) {
+    if (calm) return;
+    const ax = el.dataset.fill === 'y' ? 'scaleY' : 'scaleX';
+    el.animate([{ transform: ax + '(0)' }, { transform: ax + '(1)' }],
+      { duration: 1000, delay, easing: EASE, fill: 'backwards' });
+  }
+
+  function draw(path, delay = 0) {
+    if (calm || !path.getTotalLength) return;
+    const L = path.getTotalLength();
+    path.style.strokeDasharray = L;
+    path.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 1800, delay, easing: EASE, fill: 'backwards' })
+      .finished.then(() => { path.style.strokeDasharray = ''; }).catch(() => {});
+  }
+
+  // Watch groups: when a group enters view, everything inside it plays once, staggered.
+  function watch(root, opts = {}) {
+    const roll = opts.roll || '[data-roll]';
+    root.querySelectorAll(roll).forEach(build);
+    if (calm || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const g = e.target;
+        const nums = g.matches(roll) ? [g] : [...g.querySelectorAll(roll)];
+        nums.forEach((el, i) => spin(el, Math.min(i, 12) * 70));
+        g.querySelectorAll('[data-fill]').forEach((el, i) => fill(el, Math.min(i, 24) * 30));
+        g.querySelectorAll('[data-draw]').forEach((el) => draw(el, 100));
+        if (g._onEnter) g._onEnter();
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+    root.querySelectorAll(opts.groups || '[data-group]').forEach((g) => io.observe(g));
+  }
+
+  return { build, spin, fill, draw, watch, calm };
+})();
+</script>
+
+<script>
+(() => {
+  const SB = window.Scoreboard; if (!SB) return;
+  document.querySelectorAll('.big, .file, .pull').forEach((g) => g.setAttribute('data-group', ''));
+  SB.watch(document, { roll: '.big b, .file .ev b, .pull' });
+})();
+</script>
+
+</body>
+</html>

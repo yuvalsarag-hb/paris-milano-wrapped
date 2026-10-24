@@ -1,0 +1,913 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>תמיד תהיה לנו פריז ומילנו</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@400;700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Secular+One&family=Rubik:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one RTL column like a matchday programme — big condensed headlines, quiet panels, orange used only for data and one hero mark. Dark by design. */
+:root {
+  --ink: #fff3df;
+  --panel: #ffffff;
+  --panel-2: #ffe9c7;
+  --line: #ecd7b4;
+  --cream: #1f1235;
+  --muted: #5d4b6b;
+  --soft: #5d4b6b;
+  --orange: #ff3d68;
+  --ember: #c0123f;
+  --deep: #ffb3c3;
+  --heat-0: #ffe9c7;
+  --display: "Karantina", "Arial Narrow", "Heebo", sans-serif;
+  --body: "IBM Plex Sans Hebrew", "Heebo", "Arial Hebrew", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { background: var(--ink); }
+body {
+  background: var(--ink); color: var(--cream); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  direction: rtl; -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section { padding-block: 72px 8px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: .9; margin: 0; text-wrap: balance; letter-spacing: .01em; }
+h2 { font-size: calc(clamp(48px, 8vw, 84px) * var(--ds, 1)); color: var(--cream); }
+h2 em { font-style: normal; color: var(--orange); }
+.lede { color: var(--soft); max-width: 60ch; margin: 14px 0 28px; font-size: 17px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; display: block; }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.muted { color: var(--soft); }
+.small { font-size: 13px; }
+a { color: var(--ember); }
+button { font: inherit; }
+:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; border-radius: 6px; }
+
+/* hero */
+.hero { padding-block: 56px 24px; }
+.hero-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--soft); text-transform: uppercase; }
+.hero-top .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--orange); margin-inline-start: 8px; vertical-align: middle; box-shadow: 0 0 0 4px #ff3d6822; }
+.hero h1 { font-size: calc(clamp(64px, 13vw, 150px) * var(--ds, 1)); margin-top: 28px; }
+.hero h1 span { color: var(--orange); }
+.hero .quip { font-style: italic; color: var(--orange); margin-top: 10px; }
+.hero .sub { font-size: clamp(18px, 2.4vw, 22px); color: var(--soft); max-width: 46ch; margin: 18px 0 0; }
+.bignum { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; margin-top: 40px; }
+.bignum .n { font-family: var(--display); font-size: calc(clamp(96px, 20vw, 220px) * var(--ds, 1)); line-height: .8; color: var(--cream); font-variant-numeric: tabular-nums; }
+.bignum .l { font-size: 20px; color: var(--soft); }
+.statrow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 36px; }
+.statrow > div { background: var(--ink); padding: 16px 18px; }
+.statrow b { display: block; font-family: var(--display); font-size: calc(44px * var(--ds, 1)); line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.statrow span { font-size: 13px; color: var(--soft); }
+.barcode-wrap { margin-top: 40px; }
+.barcode-wrap canvas { width: 100%; height: 120px; display: block; cursor: crosshair; }
+.axis { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 11px; color: var(--soft); margin-top: 6px; }
+
+/* calendar */
+.cal-year { display: grid; grid-template-columns: 56px 1fr; gap: 12px; align-items: center; margin-bottom: 10px; }
+.cal-year .y { font-family: var(--display); font-size: calc(30px * var(--ds, 1)); color: var(--soft); }
+.cal-year canvas { width: 100%; display: block; cursor: crosshair; }
+.legend { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--soft); margin-top: 14px; }
+.legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+/* charts */
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart text { fill: var(--soft); font-family: var(--mono); font-size: 11px; }
+
+/* top days */
+.days { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.day { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; display: grid; gap: 6px; align-content: start; }
+.day .d { font-size: 14px; color: var(--soft); }
+.day .c { font-family: var(--display); font-size: calc(48px * var(--ds, 1)); line-height: .9; color: var(--cream); }
+.day .c small { font-family: var(--body); font-size: 14px; color: var(--soft); margin-inline-start: 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: 13px; padding: 2px 9px; border-radius: 99px; background: #ff3d681a; color: var(--ember); border: 1px solid #ff3d6833; }
+.day.quiet { background: var(--ink); border-style: dashed; }
+.day.quiet .c { color: var(--soft); }
+
+/* leaderboard */
+.board { display: grid; gap: 2px; }
+.row { display: grid; grid-template-columns: 34px minmax(110px, 190px) 1fr 86px 56px; gap: 14px; align-items: center; padding: 8px 4px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.row .r { font-family: var(--mono); color: var(--soft); font-size: 12px; }
+.row .nm { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .bar { height: 10px; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
+.row .bar i { display: block; height: 100%; transform-origin: right; background: linear-gradient(to left, var(--orange), var(--deep)); border-radius: 99px; }
+.row .v, .row .p { text-align: left; }
+.row .p { color: var(--soft); }
+.row.ghost .nm { color: var(--soft); font-style: italic; }
+.row.ghost .bar i { background: repeating-linear-gradient(-45deg, #968388, #968388 4px, transparent 4px, transparent 8px); }
+.more { margin-top: 16px; background: none; border: 1px solid var(--line); color: var(--cream); padding: 10px 18px; border-radius: 99px; cursor: pointer; }
+.more:hover { border-color: var(--orange); }
+
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.mini h3 { font-size: calc(34px * var(--ds, 1)); margin-bottom: 4px; }
+.mini p { margin: 0 0 16px; font-size: 14px; color: var(--soft); }
+.mrow { display: grid; grid-template-columns: 1fr 44px; gap: 10px; align-items: center; margin-bottom: 10px; font-size: 14px; }
+.mrow .t { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.mrow .bar { height: 6px; background: var(--panel-2); border-radius: 99px; overflow: hidden; }
+.mrow .bar i { display: block; height: 100%; background: var(--orange); transform-origin: right; }
+
+/* pace */
+.podium { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 12px; align-items: end; }
+.pod { background: var(--panel-2); border-radius: 14px; padding: 18px 12px; text-align: center; border: 1px solid var(--line); }
+.pod .pl { font-family: var(--mono); font-size: 12px; color: var(--orange); }
+.pod .who { font-weight: 600; margin: 6px 0 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pod .t { font-family: var(--display); font-size: calc(54px * var(--ds, 1)); line-height: 1; }
+.pod .t small { font-family: var(--body); font-size: 14px; color: var(--soft); }
+.pod.first { padding-block: 34px; border-color: #ff3d6855; background: linear-gradient(to bottom, #ff3d6814, var(--panel-2)); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
+.tile { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.tile .k { font-size: 14px; color: var(--soft); }
+.tile .v { font-family: var(--display); font-size: calc(64px * var(--ds, 1)); line-height: 1; margin: 8px 0 4px; font-variant-numeric: tabular-nums; }
+.tile .v small { font-family: var(--body); font-size: 16px; color: var(--soft); margin-inline-start: 6px; }
+.tile .s { font-size: 13px; color: var(--soft); }
+
+/* clock heatmap */
+.clock { display: grid; grid-template-columns: 22px repeat(24, minmax(0, 1fr)); gap: 3px; direction: rtl; }
+.clock .lab { font-size: 12px; color: var(--soft); display: flex; align-items: center; }
+.clock .cell { aspect-ratio: 1; border-radius: 3px; }
+.clock .hr { font-family: var(--mono); font-size: 10px; color: var(--soft); text-align: center; }
+
+/* awards */
+.awards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.award { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px 20px; display: grid; gap: 4px; align-content: start; position: relative; overflow: hidden; }
+.award .ttl { font-family: var(--display); font-size: calc(32px * var(--ds, 1)); line-height: 1; color: var(--orange); }
+.award .who { font-size: 20px; font-weight: 600; margin-top: 10px; }
+.award .why { font-size: 13px; color: var(--soft); }
+.award .ic { position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; color: #ff3d6855; }
+
+/* player cards */
+.toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 18px; }
+.toolbar input { flex: 1 1 220px; background: var(--panel); border: 1px solid var(--line); color: var(--cream); border-radius: 99px; padding: 10px 16px; font: inherit; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.card { background: linear-gradient(170deg, var(--panel-2), var(--panel) 60%); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: grid; gap: 12px; align-content: start; }
+.card .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.card .rank { font-family: var(--display); font-size: calc(40px * var(--ds, 1)); line-height: .8; color: var(--orange); }
+.card .name { font-size: 18px; font-weight: 600; line-height: 1.25; }
+.card .since { font-size: 12px; color: var(--soft); }
+.card .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-block: 1px solid var(--line); padding-block: 10px; }
+.card .stats b { display: block; font-family: var(--display); font-size: calc(28px * var(--ds, 1)); line-height: 1; font-weight: 700; }
+.card .stats span { font-size: 11px; color: var(--soft); }
+.card .spark { display: flex; align-items: flex-end; gap: 2px; height: 34px; direction: rtl; }
+.card .spark i { flex: 1; transform-origin: bottom; background: #ff3d6855; border-radius: 2px 2px 0 0; min-height: 1px; }
+.card .spark i.pk { background: var(--orange); }
+.card .sl { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--soft); margin-top: -8px; }
+.card .emo { font-size: 22px; letter-spacing: 2px; }
+.card .lbl { font-size: 11px; color: var(--soft); margin-bottom: 4px; }
+
+/* words */
+.wall { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; line-height: 1.05; }
+.wall span { font-family: var(--display); color: var(--cream); }
+.wall span.hot { color: var(--orange); }
+.years { display: grid; gap: 0; }
+.yr { display: grid; grid-template-columns: 70px 120px 1fr; gap: 16px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.yr .y { font-family: var(--display); font-size: calc(40px * var(--ds, 1)); line-height: 1; }
+.yr .meta { font-size: 13px; color: var(--soft); line-height: 1.4; }
+.emojis { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 10px; }
+.emojis div { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 12px 6px; text-align: center; }
+.emojis .e { font-size: 34px; line-height: 1.1; }
+.emojis .n { font-size: 12px; color: var(--soft); }
+
+/* mood */
+.multiples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 16px; }
+.key { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--soft); margin-bottom: 8px; }
+.key i { display: inline-block; width: 14px; height: 3px; border-radius: 2px; vertical-align: middle; margin-inline-end: 6px; }
+
+.bonds { display: grid; gap: 10px; }
+.bond { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+.bond .pp { font-weight: 600; }
+.bond .pp i { font-style: normal; color: var(--orange); margin: 0 8px; }
+.bond .x { font-family: var(--display); font-size: calc(36px * var(--ds, 1)); color: var(--orange); line-height: 1; }
+.bond .x small { font-family: var(--body); font-size: 12px; color: var(--soft); display: block; text-align: left; }
+
+footer { padding-block: 80px 60px; color: var(--soft); font-size: 13px; }
+footer .wrap { border-top: 1px solid var(--line); padding-top: 28px; display: grid; gap: 10px; }
+footer h3 { font-size: calc(36px * var(--ds, 1)); color: var(--cream); }
+
+#tip { position: fixed; pointer-events: none; z-index: 10; background: #000d; border: 1px solid var(--line); color: var(--cream); font-size: 13px; padding: 6px 10px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -120%); }
+
+@media (max-width: 640px) {
+  section { padding-block: 56px 4px; }
+  .row { grid-template-columns: 26px minmax(90px, 1fr) 1fr 64px; gap: 8px; font-size: 14px; }
+  .row .p { display: none; }
+  .cal-year { grid-template-columns: 1fr; gap: 2px; }
+  .cal-year .y { font-size: 24px; }
+  .yr { grid-template-columns: 56px 1fr; }
+  .yr .chips { grid-column: 1 / -1; }
+  .podium { grid-template-columns: 1fr; }
+  .clock { gap: 2px; }
+  .clock .hr:nth-child(odd) { visibility: hidden; }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card, .award, .day, .tile, .bond, .emojis > div { transition: transform .45s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .45s cubic-bezier(.16,1,.3,1); }
+  .card:hover, .award:hover, .day:hover, .tile:hover, .bond:hover, .emojis > div:hover { transform: translateY(-4px); border-color: #ff3d6855; box-shadow: 0 18px 40px -18px rgba(0,0,0,.8), 0 2px 0 -1px #ff3d6833; }
+  .award:hover .ic { color: var(--orange); transition: color .3s; }
+  .emojis > div:hover .e { transform: scale(1.18) rotate(-6deg); }
+  .emojis .e { display: inline-block; transition: transform .45s cubic-bezier(.34,1.56,.64,1); }
+  .row:hover .nm { color: var(--ember); }
+  .row:hover .bar i { filter: brightness(1.15); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+  .rise.d1 { animation-delay: .08s } .rise.d2 { animation-delay: .16s } .rise.d3 { animation-delay: .24s }
+  @keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
+}
+</style>
+<style>
+/* Shared base for every light skin: loaded before the skin's own file. */
+:root { color-scheme: light; }
+html, body { background: var(--ink); }
+::selection { background: var(--orange); color: #fff; }
+html { scrollbar-color: var(--line) var(--ink); }
+#tip { background: var(--cream); color: var(--panel); border-color: transparent; box-shadow: 0 8px 20px -10px rgba(0,0,0,.35); }
+.row .bar, .mrow .bar { background: var(--panel-2); }
+.chip { background: color-mix(in srgb, var(--orange) 10%, var(--panel)); color: var(--ember); border-color: color-mix(in srgb, var(--orange) 28%, transparent); }
+.pod.first { border-color: color-mix(in srgb, var(--orange) 45%, transparent); background: linear-gradient(to bottom, color-mix(in srgb, var(--orange) 10%, var(--panel)), var(--panel)); }
+.card { background: var(--panel); }
+.statrow > div { background: var(--panel); }
+.day.quiet { background: transparent; }
+.lead::first-letter, b, strong { color: var(--orange); }
+.byline i { background: radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--orange) 40%, #fff), var(--orange) 60%, var(--ember)); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover, .award:hover, .day:hover, .tile:hover, .bond:hover, .emojis > div:hover, .file:hover {
+    box-shadow: 0 16px 32px -18px color-mix(in srgb, var(--cream) 45%, transparent);
+    border-color: color-mix(in srgb, var(--orange) 45%, var(--line));
+  }
+}
+
+/* FRIENDS: sticker-pop. Hot paper, black outlines with hard offset shadows (a deliberate neobrutalist world), a different candy color per card. */
+:root {
+  --display: "Secular One", "Rubik", system-ui, sans-serif;
+  --body: "Rubik", "Assistant", system-ui, sans-serif;
+  --ui: "Rubik", "Assistant", system-ui, sans-serif;
+  --serif: "Rubik", system-ui, sans-serif;
+  --ds: .7;
+  --pop1: #ffe1e8; --pop2: var(--accent2, #fff0b3); --pop3: #d6f5ec; --pop4: #e6dcff;
+}
+body { font-size: 16px; }
+h1, h2, h3 { font-weight: 400; letter-spacing: 0; line-height: 1.02; }
+.hero h1 span, .hero h1 em { color: var(--orange); }
+h2 em { color: var(--cream); background: var(--pop2); padding: 0 .18em; border-radius: 8px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.bignum .n { font-size: calc(clamp(96px, 20vw, 220px) * .66); display: inline-block; transform: rotate(-2deg); }
+.eyebrow { display: inline-block; background: var(--cream); color: var(--panel); padding: 3px 10px; border-radius: 6px; letter-spacing: .04em; font-family: var(--ui); font-weight: 700; }
+.panel, .day, .tile, .award, .card, .bond, .emojis > div, .pod, .file, .diag, .cta {
+  background: var(--panel); border: 2.5px solid var(--cream); border-radius: 18px; box-shadow: 5px 5px 0 var(--cream);
+}
+.statrow { border: 2.5px solid var(--cream); box-shadow: 5px 5px 0 var(--cream); background: var(--cream); gap: 2.5px; border-radius: 18px; }
+.award:nth-child(4n+1), .day:nth-child(4n+1), .file:nth-child(4n+1) { background: var(--pop1); }
+.award:nth-child(4n+2), .day:nth-child(4n+2), .file:nth-child(4n+2) { background: var(--pop2); }
+.award:nth-child(4n+3), .day:nth-child(4n+3), .file:nth-child(4n+3) { background: var(--pop3); }
+.award:nth-child(4n), .day:nth-child(4n), .file:nth-child(4n) { background: var(--pop4); }
+.award:nth-child(odd) { transform: rotate(-.8deg); } .award:nth-child(even) { transform: rotate(.8deg); }
+.award .ttl { color: var(--cream); }
+.award .ic { color: var(--cream); opacity: .5; }
+.chip { background: var(--panel); color: var(--cream); border: 1.5px solid var(--cream); }
+.row { border-bottom: 2px dashed color-mix(in srgb, var(--cream) 18%, transparent); }
+.row .bar { height: 14px; border: 2px solid var(--cream); background: var(--panel); }
+.row .bar i, .mrow .bar i { background: var(--orange); border-radius: 0; }
+.row:nth-child(3n+2) .bar i { background: #ffb800; } .row:nth-child(3n) .bar i { background: #6c2bd9; }
+.card .spark i { background: color-mix(in srgb, var(--orange) 35%, var(--panel)); }
+.card .spark i.pk { background: var(--orange); }
+.card .rank { color: var(--orange); }
+.pod.first { background: var(--pop2); }
+.more { background: var(--orange); color: #fff; border: 2.5px solid var(--cream); box-shadow: 3px 3px 0 var(--cream); font-weight: 700; }
+.file .tab { border: 2.5px solid var(--cream); border-bottom: 0; background: var(--panel); color: var(--cream); }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .card:hover, .award:hover, .day:hover, .tile:hover, .bond:hover, .emojis > div:hover, .file:hover { transform: translate(-3px, -3px) rotate(0deg); box-shadow: 8px 8px 0 var(--cream); border-color: var(--cream); }
+}
+/* story */
+.mast { background: var(--orange); color: #fff; border: 0; }
+.mast .stamp { color: var(--cream); }
+.kicker { background: var(--cream); color: var(--panel); border-radius: 6px; transform: rotate(-2deg); display: inline-block; }
+blockquote { border-right: 0; background: var(--pop2); border-radius: 14px; padding: 14px 18px; }
+.cta a { background: var(--cream); color: var(--panel); }
+.diag li::marker { color: var(--orange); }
+
+</style>
+
+<div id="tip" hidden></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-top"><span><span class="dot"></span><span id="h-range"></span></span><span id="h-gen"></span></div>
+    <h1 class="rise" id="h-title"></h1>
+    <p class="sub rise d1" id="h-sub"></p>
+    <p class="sub quip rise d1" data-copy="heroQuip" hidden></p>
+    <div class="bignum rise d2"><span class="n" id="h-total"></span><span class="l">הודעות</span></div>
+    <div class="statrow rise d3" id="h-stats"></div>
+    <div class="barcode-wrap">
+      <canvas id="barcode" aria-label="כל יום בתולדות הקבוצה כפס אנכי; ככל שהוא בהיר וגבוה יותר, נכתבו בו יותר הודעות"></canvas>
+      <div class="axis" id="barcode-axis"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="calendar"><div class="wrap">
+    <span class="eyebrow" id="cal-eyebrow"></span>
+    <h2 data-copy="calTitle">השנים שלכם, <em>יום אחרי יום.</em></h2>
+    <p class="lede">כל ריבוע הוא יום. ככל שהצבע חזק יותר, דיברתם יותר. שבוע אחד בכל עמודה, ראשון למעלה.</p>
+    <div class="panel" id="cal"></div>
+  </div></section>
+
+  <section id="timeline"><div class="wrap">
+    <span class="eyebrow">הודעות בכל חודש</span>
+    <h2 data-copy="tlTitle">הגלים.</h2>
+    <p class="lede" id="tl-lede"></p>
+    <div class="panel chart" id="tl"></div>
+  </div></section>
+
+  <section id="bigdays"><div class="wrap">
+    <span class="eyebrow">12 הימים העמוסים ביותר</span>
+    <h2 data-copy="daysTitle">הימים <em>הגדולים.</em></h2>
+    <p class="lede">המילים מתחת לכל יום הן אלה שבלטו בו במיוחד לעומת כל שאר הימים.</p>
+    <div class="days" id="days"></div>
+  </div></section>
+
+  <section id="who"><div class="wrap">
+    <span class="eyebrow" data-copy="boardEyebrow">הטבלה</span>
+    <h2 data-copy="whoTitle">מי <em>מדבר.</em></h2>
+    <p class="lede" id="who-lede"></p>
+    <div class="board" id="board"></div>
+    <button class="more" id="board-more" type="button"></button>
+  </div></section>
+
+  <section id="open"><div class="wrap">
+    <span class="eyebrow" id="open-eyebrow"></span>
+    <h2 data-copy="openTitle">מי פותח, <em>מי סוגר.</em></h2>
+    <p class="lede">שיחה חדשה מתחילה אחרי שלוש שעות של שקט. מי שכותב ראשון פתח אותה. מי שכתב אחרון לפני השקט סגר אותה.</p>
+    <div class="two">
+      <div class="panel mini"><h3>פותחים את השיחה</h3><p>אחוז מכל השיחות</p><div id="starters"></div></div>
+      <div class="panel mini"><h3>המילה האחרונה</h3><p>אחוז מכל השיחות</p><div id="closers"></div></div>
+    </div>
+  </div></section>
+
+  <section id="pace"><div class="wrap">
+    <span class="eyebrow">זמן תגובה חציוני</span>
+    <h2 data-copy="paceTitle">הקצב <em>שלכם.</em></h2>
+    <p class="lede">מבין מי שכתבו יותר מ־<span id="fast-min"></span> הודעות: כמה זמן עובר, בחציון, מרגע שמישהו אחר כתב ועד שהם עונים.</p>
+    <div class="podium" id="podium"></div>
+    <div class="tiles" id="pace-tiles"></div>
+  </div></section>
+
+  <section id="clock"><div class="wrap">
+    <span class="eyebrow">יום בשבוע × שעה ביום</span>
+    <h2 data-copy="clockTitle">מתי <em>אתם פה.</em></h2>
+    <p class="lede" id="clock-lede"></p>
+    <div class="panel"><div class="clock" id="clockgrid"></div></div>
+  </div></section>
+
+  <section id="awards"><div class="wrap">
+    <span class="eyebrow">מבין מי שכתבו יותר מ־<span id="award-min"></span> הודעות</span>
+    <h2 data-copy="awardsTitle">פרסי <em>הקבוצה.</em></h2>
+    <p class="lede">כל פרס מחושב לפי יחס ולא לפי כמות, כדי שגם מי שכותב פחות יוכל לזכות.</p>
+    <div class="awards" id="awardgrid"></div>
+  </div></section>
+
+  <section id="players"><div class="wrap">
+    <span class="eyebrow">כרטיס לכל חבר</span>
+    <h2 data-copy="squadTitle">כל <em>החבר׳ה.</em></h2>
+    <p class="lede">שעות הפעילות, האימוג׳ים והמילים שמזהות כל אחד. המילים המזהות הן מילים שמופיעות אצל כל אחד הרבה יותר מאשר אצל שאר הקבוצה.</p>
+    <div class="toolbar"><input id="q" type="search" placeholder="חיפוש לפי שם" aria-label="חיפוש חבר לפי שם"></div>
+    <div class="cards" id="cards"></div>
+    <button class="more" id="cards-more" type="button"></button>
+  </div></section>
+
+  <section id="words"><div class="wrap">
+    <span class="eyebrow" id="words-eyebrow"></span>
+    <h2 data-copy="wordsTitle">המילים <em>שלכם.</em></h2>
+    <p class="lede">60 המילים הנפוצות ביותר, אחרי שהוצאנו מילות קישור. הגודל לפי השכיחות.</p>
+    <div class="panel"><div class="wall" id="wall"></div></div>
+  </div></section>
+
+  <section id="byyear"><div class="wrap">
+    <span class="eyebrow">שנה אחרי שנה</span>
+    <h2 data-copy="yearsTitle">המילים של <em>כל שנה.</em></h2>
+    <p class="lede" data-copy="yearsLede">המילים שבלטו בכל שנה לעומת כל שאר השנים. ככה רואים מה העסיק אתכם בכל תקופה.</p>
+    <div class="years" id="years"></div>
+  </div></section>
+
+  <section id="emoji"><div class="wrap">
+    <span class="eyebrow" id="emoji-eyebrow"></span>
+    <h2 data-copy="emojiTitle">האימוג׳ים.</h2>
+    <p class="lede">גוני עור אוחדו לאימוג׳י אחד.</p>
+    <div class="emojis" id="emojis"></div>
+  </div></section>
+
+  <section id="mood" hidden><div class="wrap">
+    <span class="eyebrow">אזכורים לכל 10,000 הודעות, לפי שנה</span>
+    <h2 data-copy="moodTitle">מד <em>המצב רוח.</em></h2>
+    <p class="lede">כמה פעמים הופיעו מילים מסוימות בכל שנה, מנורמל לכמות ההודעות באותה שנה.</p>
+    <div class="multiples" id="multiples"></div>
+  </div></section>
+
+  <section id="bonds"><div class="wrap">
+    <span class="eyebrow">מי עונה למי</span>
+    <h2 data-copy="bondsTitle">הזוגות.</h2>
+    <p class="lede">מי עונה למי תוך חמש דקות. משמאל, הצמדים עם הכי הרבה תשובות הדדיות. מימין, צמדים שמדברים זה עם זה הרבה יותר ממה שהיה צפוי לפי כמות ההודעות של כל אחד.</p>
+    <div class="two">
+      <div class="mini"><h3>החיבור המיוחד</h3><p>יחס לעומת הצפוי</p><div class="bonds" id="bondlist"></div></div>
+      <div class="mini"><h3>הכי הרבה תשובות</h3><p>תשובות הדדיות תוך 5 דקות</p><div class="bonds" id="pairlist"></div></div>
+    </div>
+  </div></section>
+
+  <section id="sources"><div class="wrap">
+    <span class="eyebrow" id="src-eyebrow"></span>
+    <h2 data-copy="srcTitle">מאיפה <em>הלינקים.</em></h2>
+    <p class="lede">האתרים שהכי הרבה שיתפתם בקבוצה.</p>
+    <div class="panel" id="domains"></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <p style="margin:0 0 18px"><a href="story.html" style="color:var(--ember);font-size:16px;font-weight:600">לכתבה ←</a></p>
+  <h3 data-copy="methodTitle">איך זה חושב</h3>
+  <div>הנתונים נלקחו מקובץ הייצוא של הקבוצה ונותחו בלי לשלוח אותם לאף שירות. שיחה חדשה מתחילה אחרי 3 שעות שקט. זמן תגובה הוא החציון של הפער בין הודעה של מישהו אחר לתשובה, עד שעתיים. <span id="ghost-q"></span> הן הודעות של מי שכבר עזב, שוואטסאפ משייך לשם הקבוצה. תמונות, סרטונים ומדבקות נספרות כהודעות אבל לא כמילים. קללות לא נכנסו לרשימות המילים.</div>
+  <div id="foot-gen"></div>
+</div></footer>
+
+<script>window.SB_EASE = "cubic-bezier(.34,1.45,.64,1)";</script>
+<!-- Scoreboard motion layer, shared by the report and the story page.
+     Numbers render final at rest; when they scroll into view each digit drum spins and settles left to right.
+     Anything marked [data-fill] (bars) grows in, [data-draw] (SVG lines) draws in. Reduced motion: nothing moves. -->
+<style>
+::selection { background: #ff3d68; color: #fff3df; }
+html { scrollbar-color: #ecd7b4 #fff3df; }
+input, textarea { caret-color: #ff3d68; }
+/* drums must inherit the number's type even where a container styles every span (e.g. stat captions) */
+.odo, .odo span { font-size: inherit !important; color: inherit !important; font-weight: inherit !important; font-family: inherit !important; margin-inline: 0; }
+/* and their layout, even where a container sets display on every span (e.g. story stat captions) */
+.odo { display: inline-flex !important; } .odo-d, .odo-c { display: inline-block !important; } .odo-s, .odo-s > span { display: block !important; }
+.odo { display: inline-flex; direction: ltr; unicode-bidi: isolate; white-space: nowrap; vertical-align: baseline; }
+.odo-d { display: inline-block; height: 1.12em; line-height: 1.12em; overflow: hidden; vertical-align: top; position: relative; margin-block: -.06em; }
+.odo-s { display: block; will-change: transform; }
+.odo-s > span { display: block; height: 1.12em; text-align: center; }
+.odo-c { display: inline-block; height: 1.12em; line-height: 1.12em; vertical-align: top; margin-block: -.06em; }
+/* split-flap tiles for the hero figure */
+.flap .odo { gap: .06em; align-items: flex-end; }
+.flap .odo-d { height: 1em; line-height: 1em; margin: 0; padding: 0 .07em; border-radius: .07em; background: linear-gradient(#211b15 0 49.4%, #120f0c 49.4% 50.6%, #1b1612 50.6%); box-shadow: 0 .03em .06em rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.05); }
+.flap .odo-d::after { content: ""; position: absolute; inset-inline: 0; top: 50%; height: 1px; background: rgba(0,0,0,.6); }
+.flap .odo-s > span { height: 1em; }
+.flap .odo-c { height: 1em; line-height: 1em; margin: 0; color: #ff3d68 !important; }
+#matchclock { position: fixed; top: env(safe-area-inset-top, 0px); inset-inline: 0; height: 3px; z-index: 20; background: linear-gradient(to left, #ff3d68, #c0123f); transform-origin: right; transform: scaleX(0); pointer-events: none; }
+@supports not (animation-timeline: scroll()) { #matchclock { display: none; } }
+@supports (animation-timeline: scroll()) {
+  #matchclock { animation: clockfill linear both; animation-timeline: scroll(root); }
+  @keyframes clockfill { to { transform: scaleX(1); } }
+}
+@media (prefers-reduced-motion: reduce) { #matchclock { display: none; } }
+</style>
+<div id="matchclock" aria-hidden="true"></div>
+<script>
+window.Scoreboard = (() => {
+  const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DRUM = 'cubic-bezier(.16,1,.3,1)';            // drums never overshoot: they'd show digits past the end
+  const EASE = window.SB_EASE || DRUM;                   // bars and lines may bounce (skin choice)
+  const LOOPS = 3; // each drum holds 0-9 three times so low digits can spin past
+
+  // Turn the leading text of el into digit drums showing the final value.
+  function build(el) {
+    if (el.dataset.odo) return;
+    let node = [...el.childNodes].find((n) => n.nodeType === 3 && /\d/.test(n.nodeValue));
+    if (!node) return;
+    const text = node.nodeValue, wrap = document.createElement('span');
+    wrap.className = 'odo'; wrap.setAttribute('aria-label', text.trim());
+    const drums = [];
+    for (const ch of text) {
+      if (/\d/.test(ch)) {
+        const d = document.createElement('span'), s = document.createElement('span');
+        d.className = 'odo-d'; d.setAttribute('aria-hidden', 'true'); s.className = 'odo-s';
+        for (let k = 0; k < LOOPS * 10; k++) { const c = document.createElement('span'); c.textContent = k % 10; s.appendChild(c); }
+        const target = (LOOPS - 1) * 10 + +ch;
+        s.style.transform = `translateY(${-target / (LOOPS * 10) * 100}%)`;
+        d.appendChild(s); wrap.appendChild(d); drums.push({ s, target });
+      } else {
+        const c = document.createElement('span'); c.className = 'odo-c'; c.setAttribute('aria-hidden', 'true');
+        c.textContent = ch === ' ' ? ' ' : ch; wrap.appendChild(c);
+      }
+    }
+    node.replaceWith(wrap);
+    el.dataset.odo = '1';
+    el._drums = drums;
+  }
+
+  function spin(el, delay = 0) {
+    if (calm || !el._drums) return;
+    // every drum spins up from 0 through two full turns; left drums settle first, like a scoreboard locking in
+    const pct = (k) => `translateY(${-k / (LOOPS * 10) * 100}%)`;
+    el._drums.forEach(({ s, target }, i) => {
+      s.animate([{ transform: pct(0), filter: 'blur(1.5px)' }, { offset: .7, filter: 'blur(.6px)' }, { transform: pct(target), filter: 'blur(0)' }],
+        { duration: 950 + i * 120, delay, easing: DRUM, fill: 'backwards' });
+    });
+  }
+
+  function fill(el, delay = 0) {
+    if (calm) return;
+    const ax = el.dataset.fill === 'y' ? 'scaleY' : 'scaleX';
+    el.animate([{ transform: ax + '(0)' }, { transform: ax + '(1)' }],
+      { duration: 1000, delay, easing: EASE, fill: 'backwards' });
+  }
+
+  function draw(path, delay = 0) {
+    if (calm || !path.getTotalLength) return;
+    const L = path.getTotalLength();
+    path.style.strokeDasharray = L;
+    path.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }], { duration: 1800, delay, easing: EASE, fill: 'backwards' })
+      .finished.then(() => { path.style.strokeDasharray = ''; }).catch(() => {});
+  }
+
+  // Watch groups: when a group enters view, everything inside it plays once, staggered.
+  function watch(root, opts = {}) {
+    const roll = opts.roll || '[data-roll]';
+    root.querySelectorAll(roll).forEach(build);
+    if (calm || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const g = e.target;
+        const nums = g.matches(roll) ? [g] : [...g.querySelectorAll(roll)];
+        nums.forEach((el, i) => spin(el, Math.min(i, 12) * 70));
+        g.querySelectorAll('[data-fill]').forEach((el, i) => fill(el, Math.min(i, 24) * 30));
+        g.querySelectorAll('[data-draw]').forEach((el) => draw(el, 100));
+        if (g._onEnter) g._onEnter();
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -18% 0px' });
+    root.querySelectorAll(opts.groups || '[data-group]').forEach((g) => io.observe(g));
+  }
+
+  return { build, spin, fill, draw, watch, calm };
+})();
+</script>
+
+<script>
+const DATA = {"group":"תמיד תהיה לנו פריז ומילנו","generated":"2026-10-24","totals":{"msgs":9145,"words":43972,"media":1252,"deleted":15,"members":4,"allSenders":4,"conversations":811,"links":312,"emojis":496,"first":"2017-12-21","last":"2026-10-22","spanDays":3228,"activeDays":617,"perDay":2.8},"records":{"busiestDay":{"date":"2023-01-15","n":138},"streak":{"days":19,"end":"2023-01-23"},"silence":{"days":109,"from":"2019-05-29","to":"2019-09-16"},"monologue":{"n":50,"who":"יניב שחר","date":"2026-02-17"},"longest":{"len":7162,"who":"Yuval","date":"2018-12-24","words":1037},"medianGapSec":52},"daily":{"2017-12-21":67,"2017-12-24":25,"2018-01-01":12,"2018-01-04":15,"2018-01-07":2,"2018-01-13":3,"2018-01-18":12,"2018-01-21":3,"2018-01-22":11,"2018-01-28":25,"2018-01-29":5,"2018-01-30":1,"2018-02-04":14,"2018-02-06":11,"2018-02-07":4,"2018-02-08":59,"2018-02-09":11,"2018-02-11":9,"2018-02-13":14,"2018-02-15":2,"2018-02-21":8,"2018-02-22":13,"2018-02-23":13,"2018-02-25":3,"2018-02-26":39,"2018-02-27":10,"2018-02-28":14,"2018-03-01":51,"2018-03-02":5,"2018-03-04":83,"2018-03-05":40,"2018-03-06":21,"2018-03-07":32,"2018-03-08":18,"2018-03-09":23,"2018-03-11":2,"2018-03-12":28,"2018-03-16":3,"2018-03-25":5,"2018-04-03":2,"2018-04-09":1,"2018-04-13":8,"2018-04-14":1,"2018-04-15":2,"2018-05-01":13,"2018-05-02":7,"2018-05-24":2,"2018-07-15":9,"2018-07-26":18,"2018-07-29":1,"2018-09-15":1,"2018-09-16":1,"2018-09-20":13,"2018-09-29":3,"2018-09-30":5,"2018-12-04":48,"2018-12-09":5,"2018-12-10":18,"2018-12-11":2,"2018-12-12":9,"2018-12-13":3,"2018-12-14":3,"2018-12-17":18,"2018-12-23":4,"2018-12-24":13,"2019-01-03":4,"2019-01-04":4,"2019-01-05":4,"2019-01-17":1,"2019-01-28":4,"2019-01-29":2,"2019-03-05":6,"2019-03-07":2,"2019-03-15":3,"2019-04-14":15,"2019-04-15":19,"2019-04-16":1,"2019-04-18":1,"2019-04-25":1,"2019-04-27":2,"2019-04-30":22,"2019-05-04":2,"2019-05-06":2,"2019-05-07":5,"2019-05-08":4,"2019-05-09":1,"2019-05-26":4,"2019-05-28":1,"2019-05-29":1,"2019-09-16":2,"2019-10-03":38,"2019-10-04":3,"2019-10-05":3,"2019-10-11":10,"2019-10-18":7,"2019-10-24":9,"2019-10-28":9,"2019-11-04":5,"2019-11-05":10,"2019-11-06":16,"2019-11-07":21,"2019-11-08":16,"2019-11-12":7,"2019-12-16":14,"2019-12-18":2,"2019-12-20":2,"2020-01-14":11,"2020-01-27":8,"2020-02-09":10,"2020-02-18":2,"2020-02-28":115,"2020-03-05":3,"2020-03-08":2,"2020-03-24":18,"2020-04-06":9,"2020-07-05":2,"2020-08-13":3,"2020-09-07":20,"2020-09-08":4,"2020-09-09":2,"2020-09-17":2,"2020-09-25":6,"2020-10-03":8,"2020-11-01":34,"2020-11-02":4,"2020-11-03":58,"2020-11-04":2,"2020-11-16":7,"2020-11-17":1,"2020-11-22":16,"2020-11-24":3,"2020-11-26":5,"2020-11-30":53,"2020-12-01":7,"2020-12-08":14,"2020-12-15":11,"2020-12-16":12,"2020-12-18":1,"2020-12-19":1,"2020-12-31":8,"2021-01-26":18,"2021-01-29":5,"2021-03-05":12,"2021-03-10":5,"2021-03-29":2,"2021-04-21":19,"2021-05-23":37,"2021-05-24":4,"2021-05-26":11,"2021-05-29":3,"2021-06-02":20,"2021-06-03":1,"2021-07-04":6,"2021-07-10":3,"2021-07-18":25,"2021-08-18":1,"2021-09-12":10,"2021-09-13":33,"2021-09-15":5,"2021-09-17":24,"2021-09-18":33,"2021-10-02":59,"2021-10-03":31,"2021-10-04":52,"2021-10-05":7,"2021-10-17":13,"2021-10-27":15,"2021-10-28":8,"2021-10-29":9,"2021-10-31":9,"2021-11-03":5,"2021-11-09":4,"2021-11-18":21,"2021-11-22":7,"2021-12-02":42,"2021-12-03":7,"2021-12-09":4,"2021-12-13":29,"2021-12-15":4,"2021-12-18":7,"2021-12-20":2,"2021-12-27":8,"2021-12-28":43,"2021-12-30":32,"2021-12-31":8,"2022-01-25":6,"2022-02-07":3,"2022-02-20":15,"2022-02-21":3,"2022-02-22":58,"2022-02-24":40,"2022-02-26":3,"2022-03-01":12,"2022-03-03":4,"2022-03-04":8,"2022-03-05":17,"2022-03-06":18,"2022-03-07":36,"2022-03-11":6,"2022-03-12":1,"2022-03-13":17,"2022-03-20":24,"2022-04-11":77,"2022-04-12":9,"2022-04-14":5,"2022-04-15":3,"2022-04-24":54,"2022-04-25":33,"2022-04-28":33,"2022-04-29":25,"2022-05-11":5,"2022-05-12":2,"2022-05-15":93,"2022-05-16":8,"2022-05-18":2,"2022-06-08":15,"2022-07-07":17,"2022-07-08":11,"2022-07-16":2,"2022-07-17":5,"2022-08-27":8,"2022-08-28":1,"2022-09-01":11,"2022-09-07":31,"2022-09-08":11,"2022-09-11":6,"2022-09-16":9,"2022-10-24":15,"2022-10-26":13,"2022-10-27":1,"2022-11-03":6,"2022-11-04":2,"2022-11-06":21,"2022-11-07":9,"2022-11-08":6,"2022-11-15":2,"2022-11-16":21,"2022-11-17":93,"2022-11-18":4,"2022-11-19":7,"2022-11-20":9,"2022-11-21":14,"2022-11-22":33,"2022-11-23":45,"2022-11-24":118,"2022-11-25":36,"2022-11-26":66,"2022-11-27":25,"2022-11-28":22,"2022-11-29":27,"2022-11-30":88,"2022-12-01":121,"2022-12-03":23,"2022-12-04":29,"2022-12-05":11,"2022-12-06":26,"2022-12-08":11,"2022-12-09":5,"2022-12-10":22,"2022-12-11":1,"2022-12-12":25,"2022-12-13":10,"2022-12-14":17,"2022-12-15":2,"2022-12-16":4,"2022-12-24":11,"2022-12-26":12,"2022-12-27":28,"2022-12-29":3,"2023-01-03":66,"2023-01-05":10,"2023-01-06":8,"2023-01-07":8,"2023-01-08":16,"2023-01-09":53,"2023-01-10":73,"2023-01-11":26,"2023-01-12":72,"2023-01-13":69,"2023-01-14":30,"2023-01-15":138,"2023-01-16":81,"2023-01-17":17,"2023-01-18":9,"2023-01-19":20,"2023-01-20":24,"2023-01-21":34,"2023-01-22":1,"2023-01-23":5,"2023-01-25":15,"2023-01-27":2,"2023-01-30":4,"2023-02-05":10,"2023-02-06":12,"2023-02-07":10,"2023-02-12":15,"2023-02-19":5,"2023-02-20":9,"2023-02-21":12,"2023-02-22":14,"2023-02-23":27,"2023-02-27":7,"2023-02-28":17,"2023-03-01":50,"2023-03-02":31,"2023-03-03":12,"2023-03-05":1,"2023-03-06":43,"2023-03-07":4,"2023-03-08":11,"2023-03-09":15,"2023-03-10":4,"2023-03-12":3,"2023-03-13":6,"2023-03-14":11,"2023-03-15":24,"2023-03-16":18,"2023-03-17":4,"2023-03-21":7,"2023-03-22":10,"2023-03-30":14,"2023-03-31":1,"2023-04-01":10,"2023-04-02":8,"2023-04-03":25,"2023-04-04":13,"2023-04-05":7,"2023-04-08":11,"2023-04-10":4,"2023-04-14":20,"2023-04-16":16,"2023-04-18":13,"2023-04-19":17,"2023-05-03":1,"2023-05-06":12,"2023-05-09":7,"2023-05-10":4,"2023-05-12":2,"2023-05-13":17,"2023-05-25":3,"2023-05-28":7,"2023-05-30":12,"2023-06-01":22,"2023-06-02":3,"2023-06-04":33,"2023-06-05":58,"2023-06-06":7,"2023-06-10":3,"2023-06-15":5,"2023-06-16":25,"2023-06-17":4,"2023-06-18":3,"2023-06-25":5,"2023-06-26":17,"2023-06-27":33,"2023-06-30":3,"2023-07-07":7,"2023-07-10":26,"2023-07-19":30,"2023-07-20":2,"2023-07-23":4,"2023-07-24":24,"2023-07-25":16,"2023-07-27":10,"2023-07-28":16,"2023-07-29":19,"2023-07-30":8,"2023-08-01":10,"2023-08-06":5,"2023-08-12":4,"2023-08-13":3,"2023-08-18":1,"2023-08-22":14,"2023-08-23":28,"2023-08-24":77,"2023-08-25":11,"2023-09-01":2,"2023-09-04":3,"2023-09-09":2,"2023-09-13":7,"2023-09-27":14,"2023-10-07":9,"2023-10-09":2,"2023-10-10":7,"2023-10-17":2,"2023-10-19":8,"2023-10-24":2,"2023-10-26":4,"2023-10-30":5,"2023-11-29":3,"2023-12-06":4,"2023-12-07":4,"2023-12-17":4,"2024-01-13":11,"2024-01-15":3,"2024-02-04":18,"2024-02-07":5,"2024-02-29":9,"2024-03-08":1,"2024-03-10":3,"2024-03-11":24,"2024-03-12":9,"2024-03-14":11,"2024-03-15":9,"2024-03-24":1,"2024-03-26":4,"2024-04-02":8,"2024-04-03":4,"2024-04-04":13,"2024-04-19":2,"2024-05-01":9,"2024-05-16":7,"2024-05-17":18,"2024-05-18":4,"2024-05-19":1,"2024-05-20":16,"2024-05-29":2,"2024-06-27":22,"2024-07-09":2,"2024-07-11":4,"2024-07-20":1,"2024-07-21":11,"2024-07-22":6,"2024-07-28":48,"2024-07-30":1,"2024-07-31":22,"2024-08-01":4,"2024-09-19":10,"2024-09-29":4,"2024-10-06":3,"2024-10-21":7,"2024-10-22":11,"2024-10-28":2,"2024-10-29":13,"2024-10-30":10,"2024-11-01":1,"2024-11-03":123,"2024-11-05":9,"2024-11-06":18,"2024-11-21":5,"2024-11-28":4,"2024-12-05":1,"2024-12-15":2,"2025-01-14":20,"2025-01-15":3,"2025-01-16":22,"2025-01-19":28,"2025-01-21":19,"2025-01-24":1,"2025-01-25":2,"2025-01-26":7,"2025-01-29":2,"2025-03-05":5,"2025-03-08":13,"2025-03-09":8,"2025-03-10":17,"2025-03-11":15,"2025-03-17":7,"2025-03-18":34,"2025-03-19":18,"2025-03-20":2,"2025-03-21":45,"2025-03-24":26,"2025-03-25":32,"2025-04-06":12,"2025-04-07":19,"2025-04-08":6,"2025-04-09":5,"2025-04-10":15,"2025-04-21":27,"2025-04-24":10,"2025-05-12":11,"2025-05-13":6,"2025-05-23":6,"2025-05-25":2,"2025-05-26":14,"2025-05-29":7,"2025-06-17":8,"2025-06-18":1,"2025-07-21":2,"2025-07-22":10,"2025-07-29":6,"2025-08-03":10,"2025-08-18":78,"2025-08-19":2,"2025-08-21":5,"2025-08-22":1,"2025-08-23":5,"2025-08-24":8,"2025-08-25":9,"2025-08-26":1,"2025-08-27":11,"2025-08-28":17,"2025-08-31":2,"2025-09-01":14,"2025-09-02":4,"2025-09-03":8,"2025-09-04":1,"2025-09-09":1,"2025-09-15":7,"2025-09-17":13,"2025-09-22":9,"2025-09-28":18,"2025-09-30":10,"2025-10-01":4,"2025-10-10":26,"2025-10-12":8,"2025-10-14":18,"2025-10-21":3,"2025-10-26":2,"2025-10-27":2,"2025-10-29":77,"2025-11-02":28,"2025-11-03":30,"2025-11-04":36,"2025-11-05":1,"2025-11-14":1,"2025-11-15":7,"2025-11-16":12,"2025-11-23":1,"2025-11-24":23,"2025-12-01":2,"2025-12-03":2,"2025-12-04":12,"2025-12-05":7,"2025-12-08":37,"2025-12-10":43,"2025-12-11":28,"2025-12-15":3,"2025-12-17":41,"2025-12-19":2,"2025-12-22":39,"2025-12-24":5,"2025-12-29":9,"2025-12-30":2,"2025-12-31":29,"2026-01-12":32,"2026-01-13":34,"2026-01-15":21,"2026-01-21":4,"2026-01-28":6,"2026-02-02":26,"2026-02-04":3,"2026-02-09":61,"2026-02-11":23,"2026-02-12":22,"2026-02-13":12,"2026-02-14":39,"2026-02-15":94,"2026-02-16":58,"2026-02-17":63,"2026-02-18":18,"2026-02-19":10,"2026-02-23":8,"2026-02-24":7,"2026-03-02":14,"2026-03-03":21,"2026-03-04":8,"2026-03-05":7,"2026-03-10":11,"2026-03-19":3,"2026-03-25":23,"2026-03-26":6,"2026-03-27":1,"2026-03-30":1,"2026-03-31":11,"2026-04-09":14,"2026-04-20":11,"2026-04-21":7,"2026-04-23":5,"2026-04-24":31,"2026-04-26":39,"2026-04-29":22,"2026-05-02":2,"2026-05-10":13,"2026-05-14":8,"2026-05-17":1,"2026-06-04":1,"2026-06-07":2,"2026-06-08":6,"2026-06-17":3,"2026-06-19":2,"2026-06-25":22,"2026-06-26":6,"2026-06-27":3,"2026-06-28":13,"2026-06-29":6,"2026-07-04":1,"2026-07-19":12,"2026-07-20":12,"2026-07-21":14,"2026-07-22":3,"2026-07-23":37,"2026-08-04":16,"2026-08-19":1,"2026-08-30":11,"2026-09-06":1,"2026-09-07":1,"2026-09-08":14,"2026-09-09":2,"2026-09-10":22,"2026-09-14":4,"2026-09-16":7,"2026-09-20":1,"2026-09-23":18,"2026-09-30":30,"2026-10-01":27,"2026-10-02":3,"2026-10-06":7,"2026-10-09":4,"2026-10-12":3,"2026-10-14":7,"2026-10-16":12,"2026-10-17":5,"2026-10-20":1,"2026-10-21":17,"2026-10-22":3},"monthly":{"2017-12":92,"2018-01":89,"2018-02":224,"2018-03":311,"2018-04":14,"2018-05":22,"2018-07":28,"2018-09":23,"2018-12":123,"2019-01":19,"2019-03":11,"2019-04":61,"2019-05":20,"2019-09":2,"2019-10":79,"2019-11":75,"2019-12":18,"2020-01":19,"2020-02":127,"2020-03":23,"2020-04":9,"2020-07":2,"2020-08":3,"2020-09":34,"2020-10":8,"2020-11":183,"2020-12":54,"2021-01":23,"2021-03":19,"2021-04":19,"2021-05":55,"2021-06":21,"2021-07":34,"2021-08":1,"2021-09":105,"2021-10":203,"2021-11":37,"2021-12":186,"2022-01":6,"2022-02":122,"2022-03":143,"2022-04":239,"2022-05":110,"2022-06":15,"2022-07":35,"2022-08":9,"2022-09":68,"2022-10":29,"2022-11":654,"2022-12":361,"2023-01":781,"2023-02":138,"2023-03":269,"2023-04":144,"2023-05":65,"2023-06":221,"2023-07":162,"2023-08":153,"2023-09":28,"2023-10":39,"2023-11":3,"2023-12":12,"2024-01":14,"2024-02":32,"2024-03":62,"2024-04":27,"2024-05":57,"2024-06":22,"2024-07":95,"2024-08":4,"2024-09":14,"2024-10":46,"2024-11":160,"2024-12":3,"2025-01":104,"2025-03":222,"2025-04":94,"2025-05":46,"2025-06":9,"2025-07":18,"2025-08":149,"2025-09":85,"2025-10":140,"2025-11":139,"2025-12":261,"2026-01":97,"2026-02":444,"2026-03":106,"2026-04":129,"2026-05":24,"2026-06":64,"2026-07":79,"2026-08":28,"2026-09":100,"2026-10":89},"hourWeek":[[11,8,0,0,0,7,15,24,25,113,188,124,128,85,116,115,169,113,144,120,115,73,63,60],[71,6,0,0,0,0,1,24,54,121,161,105,91,94,63,60,68,95,107,82,73,100,25,42],[5,3,0,0,0,0,0,20,66,91,71,71,72,99,66,42,42,55,41,105,176,104,91,22],[7,1,0,0,0,0,1,24,75,157,144,145,72,95,77,77,89,147,135,101,126,134,86,24],[7,5,14,0,0,2,1,7,172,106,58,86,27,53,56,69,35,32,25,31,10,10,6,4],[1,0,0,0,0,0,0,0,1,4,1,5,16,16,7,5,15,29,78,118,148,43,36,26],[11,0,0,1,7,0,6,35,58,86,95,129,101,76,89,92,155,145,153,68,97,91,49,18]],"topDays":[{"date":"2023-01-15","n":138,"words":[]},{"date":"2024-11-03","n":123,"words":[{"w":"option","n":5},{"w":"במודיעין","n":5},{"w":"בכפר","n":4},{"w":"זורם","n":6},{"w":"מקום","n":6}]},{"date":"2022-12-01","n":121,"words":[{"w":"שעות","n":22},{"w":"למילאנו","n":10},{"w":"לישון","n":14},{"w":"פיזה","n":8},{"w":"שאמוני","n":8}]},{"date":"2022-11-24","n":118,"words":[{"w":"תיק","n":7},{"w":"מעדיף","n":6},{"w":"מושב","n":4},{"w":"מסלול","n":4},{"w":"חזור","n":4}]},{"date":"2020-02-28","n":115,"words":[{"w":"בבידוד","n":6},{"w":"ביבי","n":6},{"w":"ליאור","n":4},{"w":"בבית","n":7},{"w":"חולה","n":4}]},{"date":"2026-02-15","n":94,"words":[]},{"date":"2022-05-15","n":93,"words":[]},{"date":"2022-11-17","n":93,"words":[{"w":"נדבר","n":4},{"w":"שלישי","n":6},{"w":"חמישי","n":4},{"w":"בבוקר","n":4},{"w":"מחר","n":4}]},{"date":"2022-11-30","n":88,"words":[{"w":"check","n":7},{"w":"hotel","n":6},{"w":"מיטות","n":4},{"w":"booking","n":5},{"w":"from","n":5}]},{"date":"2018-03-04","n":83,"words":[{"w":"עידן","n":4}]},{"date":"2023-01-16","n":81,"words":[{"w":"ביציאת","n":4}]},{"date":"2025-08-18","n":78,"words":[{"w":"חבית","n":4}]}],"years":[{"year":2017,"msgs":92,"members":4,"top":"עידן חמי","topShare":38,"activeDays":2,"busiest":{"date":"2017-12-21","n":67},"words":[{"w":"יורו","n":5},{"w":"סגור","n":5},{"w":"עידן","n":7}]},{"year":2018,"msgs":834,"members":4,"top":"יניב שחר","topShare":34,"activeDays":63,"busiest":{"date":"2018-03-04","n":83},"words":[{"w":"לונדון","n":23},{"w":"london","n":16},{"w":"מעניינת","n":11},{"w":"ריאל","n":13},{"w":"בלונדון","n":9},{"w":"market","n":8}]},{"year":2019,"msgs":285,"members":4,"top":"יניב שחר","topShare":36,"activeDays":41,"busiest":{"date":"2019-10-03","n":38},"words":[{"w":"מזל","n":8},{"w":"גרג","n":4},{"w":"ניתן","n":4},{"w":"ביום","n":7},{"w":"מחר","n":11},{"w":"מרטין","n":4}]},{"year":2020,"msgs":462,"members":4,"top":"משה נחמד עבאדי","topShare":27,"activeDays":34,"busiest":{"date":"2020-02-28","n":115},"words":[{"w":"חומוס","n":11},{"w":"ביבי","n":8},{"w":"בבידוד","n":6},{"w":"צוואה","n":5},{"w":"קורונה","n":5},{"w":"לאפה","n":5}]},{"year":2021,"msgs":703,"members":4,"top":"יניב שחר","topShare":35,"activeDays":45,"busiest":{"date":"2021-10-02","n":59},"words":[{"w":"סיטי","n":9},{"w":"ליפני","n":8},{"w":"בונד","n":4},{"w":"סיישל","n":4},{"w":"מטריקס","n":4},{"w":"ביס","n":4}]},{"year":2022,"msgs":1791,"members":4,"top":"יניב שחר","topShare":45,"activeDays":84,"busiest":{"date":"2022-12-01","n":121},"words":[{"w":"לישון","n":22},{"w":"במילאנו","n":20},{"w":"מילאנו","n":18},{"w":"שאמוני","n":10},{"w":"מסלול","n":10},{"w":"בערב","n":29}]},{"year":2023,"msgs":2015,"members":4,"top":"יניב שחר","topShare":41,"activeDays":124,"busiest":{"date":"2023-01-15","n":138},"words":[{"w":"di","n":12},{"w":"parking","n":11},{"w":"מזוודות","n":13},{"w":"מזוודה","n":13},{"w":"דרעי","n":7},{"w":"מביא","n":12}]},{"year":2024,"msgs":536,"members":4,"top":"יניב שחר","topShare":43,"activeDays":50,"busiest":{"date":"2024-11-03","n":123},"words":[{"w":"במודיעין","n":6},{"w":"option","n":5},{"w":"דק","n":5},{"w":"עגלת","n":4},{"w":"שמשה","n":5},{"w":"בכפר","n":5}]},{"year":2025,"msgs":1267,"members":4,"top":"יניב שחר","topShare":39,"activeDays":93,"busiest":{"date":"2025-08-18","n":78},"words":[{"w":"אפליקציה","n":9},{"w":"אתר","n":10},{"w":"ai","n":10},{"w":"יחליף","n":5},{"w":"דואג","n":6},{"w":"לזום","n":5}]},{"year":2026,"msgs":1160,"members":4,"top":"יניב שחר","topShare":42,"activeDays":81,"busiest":{"date":"2026-02-15","n":94},"words":[{"w":"קלוד","n":11},{"w":"חמי","n":18},{"w":"imax","n":7},{"w":"שחר","n":13},{"w":"מלא","n":11},{"w":"תהנו","n":12}]}],"people":[{"name":"יניב שחר","ghost":false,"msgs":3611,"share":39.49,"words":12949,"avgWords":4.5,"media":699,"deleted":3,"links":49,"emojis":27,"questions":493,"laughs":26,"laughsCaused":51,"starts":309,"lastword":314,"respMedianSec":50,"peakHour":18,"hours":[60,4,5,0,4,2,3,45,153,274,266,249,197,184,179,170,246,267,319,254,285,213,156,76],"nightPct":2.0,"morningPct":1.4,"first":"2017-12-21","last":"2026-10-22","years":{"2017":15,"2018":282,"2019":104,"2020":121,"2021":246,"2022":797,"2023":827,"2024":230,"2025":499,"2026":490},"topEmojis":["😉","👏","🙏","🥃","❤️"],"signature":[{"w":"יובל","n":142},{"w":"יופי","n":24},{"w":"עידן","n":141},{"w":"משה","n":105},{"w":"בעייה","n":15},{"w":"פנויים","n":16}]},{"name":"Yuval","ghost":false,"msgs":2156,"share":23.58,"words":15537,"avgWords":7.8,"media":150,"deleted":6,"links":157,"emojis":134,"questions":457,"laughs":43,"laughsCaused":22,"starts":247,"lastword":173,"respMedianSec":92,"peakHour":10,"hours":[11,4,2,0,0,2,6,42,141,191,203,135,125,136,108,106,125,140,188,154,157,103,62,15],"nightPct":0.8,"morningPct":2.3,"first":"2017-12-21","last":"2026-10-22","years":{"2017":22,"2018":214,"2019":67,"2020":126,"2021":157,"2022":385,"2023":377,"2024":164,"2025":367,"2026":277},"topEmojis":["🚇","🚉","✅️","👍","🛳"],"signature":[{"w":"הכול","n":23},{"w":"לונדון","n":25},{"w":"אורית","n":19},{"w":"יניב","n":82},{"w":"לגביי","n":12},{"w":"כולל","n":24}]},{"name":"עידן חמי","ghost":false,"msgs":1741,"share":19.04,"words":9861,"avgWords":6.8,"media":288,"deleted":4,"links":85,"emojis":133,"questions":270,"laughs":18,"laughsCaused":15,"starts":135,"lastword":136,"respMedianSec":274,"peakHour":11,"hours":[31,5,3,1,1,1,9,32,74,103,136,174,84,101,120,113,100,126,88,93,128,97,66,55],"nightPct":2.4,"morningPct":2.4,"first":"2017-12-21","last":"2026-10-21","years":{"2017":35,"2018":179,"2019":63,"2020":88,"2021":131,"2022":330,"2023":442,"2024":75,"2025":181,"2026":217},"topEmojis":["👍","🙂","😘","🙏","😩"],"signature":[{"w":"ליפני","n":21},{"w":"יחד","n":22},{"w":"שעות","n":28},{"w":"מרטין","n":16},{"w":"להגיד","n":14}]},{"name":"משה נחמד עבאדי","ghost":false,"msgs":1637,"share":17.9,"words":5625,"avgWords":3.7,"media":115,"deleted":2,"links":21,"emojis":202,"questions":324,"laughs":72,"laughsCaused":15,"starts":120,"lastword":187,"respMedianSec":132,"peakHour":20,"hours":[11,10,4,0,2,4,6,15,83,110,113,107,101,97,67,71,102,83,88,124,175,142,72,50],"nightPct":1.6,"morningPct":1.5,"first":"2017-12-21","last":"2026-10-17","years":{"2017":20,"2018":159,"2019":51,"2020":127,"2021":169,"2022":279,"2023":369,"2024":67,"2025":220,"2026":176},"topEmojis":["👍","😂","😏","😉","❤️"],"signature":[{"w":"גדול","n":16},{"w":"חברים","n":25},{"w":"אגב","n":10},{"w":"חושן","n":7},{"w":"שבוע","n":28},{"w":"באזור","n":8}]}],"words":[{"w":"עידן","n":273},{"w":"יובל","n":199},{"w":"משה","n":199},{"w":"יניב","n":146},{"w":"בוקר","n":132},{"w":"יום","n":121},{"w":"מחר","n":112},{"w":"הבא","n":108},{"w":"מקום","n":99},{"w":"נראה","n":98},{"w":"סבבה","n":95},{"w":"שבוע","n":90},{"w":"שישי","n":79},{"w":"בבוקר","n":74},{"w":"זורם","n":71},{"w":"אצלי","n":68},{"w":"ראשון","n":66},{"w":"בא","n":64},{"w":"חברים","n":62},{"w":"רוצים","n":59},{"w":"איזה","n":59},{"w":"בערב","n":59},{"w":"נחמד","n":59},{"w":"שעה","n":59},{"w":"חמישי","n":57},{"w":"ביום","n":56},{"w":"פנוי","n":56},{"w":"שלישי","n":55},{"w":"רביעי","n":54},{"w":"שלומי","n":54},{"w":"אחר","n":54},{"w":"ערב","n":53},{"w":"אוכל","n":53},{"w":"מגיע","n":52},{"w":"בעיה","n":50},{"w":"הייתי","n":50},{"w":"להזמין","n":47},{"w":"עדיין","n":46},{"w":"עבאדי","n":46},{"w":"חמי","n":45},{"w":"בכל","n":44},{"w":"להגיע","n":44},{"w":"סגור","n":43},{"w":"שעות","n":43},{"w":"פעם","n":42},{"w":"שבת","n":42},{"w":"לבוא","n":41},{"w":"טיול","n":40},{"w":"כרטיסים","n":39},{"w":"תזמין","n":39},{"w":"עובד","n":38},{"w":"ימים","n":38},{"w":"בטוח","n":38},{"w":"עדיף","n":38},{"w":"בראשון","n":38},{"w":"הבאה","n":37},{"w":"דקות","n":37},{"w":"תהנו","n":37},{"w":"משחק","n":37},{"w":"כולל","n":36}],"emojis":[{"e":"👍","n":120},{"e":"😂","n":40},{"e":"🚇","n":28},{"e":"🙂","n":24},{"e":"😉","n":22},{"e":"🙏","n":17},{"e":"❤️","n":16},{"e":"🚉","n":14},{"e":"😏","n":13},{"e":"✅️","n":11},{"e":"😘","n":9},{"e":"👏","n":8},{"e":"🤦‍♂️","n":7},{"e":"😜","n":6},{"e":"😩","n":6},{"e":"👆","n":6},{"e":"😱","n":6},{"e":"🛳","n":5},{"e":"🤣","n":5},{"e":"😅","n":5},{"e":"🚝","n":4},{"e":"😳","n":4},{"e":"🥳","n":4},{"e":"🤗","n":4},{"e":"🥃","n":4},{"e":"💪","n":4},{"e":"🤦","n":4},{"e":"🍣","n":4},{"e":"✌️","n":3},{"e":"😀","n":3}],"domains":[{"d":"instagram.com","n":39},{"d":"facebook.com","n":19},{"d":"mako.co.il","n":12},{"d":"booking.com","n":11},{"d":"ynet.co.il","n":8},{"d":"goo.gl","n":8},{"d":"youtu.be","n":8},{"d":"maps.app.goo.gl","n":7},{"d":"maps.google.com","n":6},{"d":"fb.watch","n":6},{"d":"sites.one.co.il","n":5},{"d":"elal.com","n":5}],"pairs":[{"a":"Yuval","b":"יניב שחר","n":1395},{"a":"יניב שחר","b":"משה נחמד עבאדי","n":882},{"a":"יניב שחר","b":"עידן חמי","n":675},{"a":"Yuval","b":"משה נחמד עבאדי","n":346},{"a":"Yuval","b":"עידן חמי","n":310},{"a":"משה נחמד עבאדי","b":"עידן חמי","n":197}],"bonds":[{"a":"Yuval","b":"יניב שחר","n":1395,"lift":1.75},{"a":"יניב שחר","b":"משה נחמד עבאדי","n":882,"lift":1.6},{"a":"יניב שחר","b":"עידן חמי","n":675,"lift":1.47},{"a":"Yuval","b":"עידן חמי","n":310,"lift":0.97},{"a":"Yuval","b":"משה נחמד עבאדי","n":346,"lift":0.9},{"a":"משה נחמד עבאדי","b":"עידן חמי","n":197,"lift":0.89}],"scale":{"awardMin":30,"fastMin":50,"cardMin":15},"terms":{"נפגשים":{"2018":5,"2019":3,"2020":3,"2021":9,"2022":37,"2023":12,"2024":11,"2025":31,"2026":9},"מבריזים":{"2017":1,"2018":9,"2019":2,"2020":3,"2021":8,"2022":12,"2023":7,"2024":1,"2025":19,"2026":2},"פריז":{"2017":4,"2018":11,"2021":2,"2022":3,"2024":3,"2026":2},"מילאנו":{"2022":58,"2023":20,"2025":7,"2026":3},"לונדון":{"2018":47,"2021":3,"2022":3,"2023":2,"2026":4},"אוכל":{"2018":23,"2019":5,"2020":18,"2021":12,"2022":43,"2023":26,"2024":10,"2025":24,"2026":10}},"copy":{"boardEyebrow":"הטבלה","awardsTitle":"פרסי <em>החבר׳ה.<\/em>","squadTitle":"החבר׳ה.","yearsLede":"המילים שבלטו בכל שנה לעומת כל שאר השנים. ככה רואים מה העסיק אתכם בכל תקופה.","ghost":"יצאו מהקבוצה","heroQuip":"בלעדי: כל מה שקרה בקבוצה, ומה שלא העזו לספר לכם.","whoTitle":"מי <em>בכותרות.<\/em>","openTitle":"מי <em>מתחיל.<\/em>","bondsTitle":"הזוגות <em>החמים.<\/em>","daysTitle":"הימים <em>שכולם דיברו עליהם.<\/em>","methodTitle":"המקורות שלנו"},"notes":{"2020-02-28":"היום שבו הבידוד הראשון הגיע גם לקבוצה. נשאיר את זה כאן.","2023-01-15":"בולוניה, צ׳ינקווה טרה ופורטופינו. רוב ההודעות באותו יום היו תמונות."},"termGroups":[{"title":"מי בא מול מי מבריז","terms":["נפגשים","מבריזים"]},{"title":"פריז, מילאנו, לונדון","terms":["פריז","מילאנו","לונדון"]}],"hideRecords":[]};
+</script>
+<script>
+(() => {
+const D = DATA;
+const $ = (s) => document.querySelector(s);
+const fmt = (n) => Math.round(n).toLocaleString('he-IL');
+const MONTHS = ['ינואר','פברואר','מרץ','אפריל','מאי','יוני','יולי','אוגוסט','ספטמבר','אוקטובר','נובמבר','דצמבר'];
+const DOW = ['א׳','ב׳','ג׳','ד׳','ה׳','ו׳','ש׳'];
+const parseDay = (s) => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d); };
+const longDate = (s) => { const d = parseDay(s); return `${d.getDate()} ב${MONTHS[d.getMonth()]} ${d.getFullYear()}`; };
+const shortDate = (s) => { const d = parseDay(s); return `${d.getDate()}.${d.getMonth() + 1}.${d.getFullYear()}`; };
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const tip = $('#tip');
+const showTip = (x, y, html) => { tip.innerHTML = html; tip.style.left = x + 'px'; tip.style.top = y + 'px'; tip.hidden = false; };
+const hideTip = () => { tip.hidden = true; };
+const notes = D.notes || {};
+// seconds -> [value, short unit, long unit]; small groups reply in minutes or hours, big ones in seconds
+const dur = (s) => s == null ? ['—', '', ''] : s < 120 ? [fmt(s), 'שנ׳', 'שניות'] : s < 7200 ? [fmt(s / 60), 'דק׳', 'דקות'] : [(s / 3600).toFixed(1), 'שע׳', 'שעות'];
+// group-type wording (presets.json flavors) and size thresholds (analyze.py)
+const COPY = Object.assign({ ghost: 'יצאו מהקבוצה' }, D.copy || {});
+const SC = Object.assign({ awardMin: 3000, fastMin: 5000, cardMin: 500 }, D.scale || {});
+document.querySelectorAll('[data-copy]').forEach((el) => { const v = COPY[el.dataset.copy]; if (v) { el.innerHTML = v; el.hidden = false; } });
+document.getElementById('ghost-q').textContent = `״${COPY.ghost}״`;
+document.getElementById('fast-min').textContent = Math.round(SC.fastMin).toLocaleString('he-IL');
+document.getElementById('award-min').textContent = Math.round(SC.awardMin).toLocaleString('he-IL');
+
+// heat ramp: warm black -> ember -> pale orange
+const RAMP = [[255,233,199],[255,210,154],[255,179,92],[255,138,76],[255,90,95],[232,40,92],[122,31,209]];
+const heat = (t) => {
+  if (t <= 0) return 'rgb(255,233,199)';
+  t = Math.min(1, t) * (RAMP.length - 1);
+  const i = Math.floor(t), f = t - i, a = RAMP[i], b = RAMP[Math.min(i + 1, RAMP.length - 1)];
+  return `rgb(${a.map((v, k) => Math.round(v + (b[k] - v) * f)).join(',')})`;
+};
+
+const T = D.totals;
+const people = D.people;
+const members = people.filter((p) => !p.ghost);
+const years = D.years.length;
+const spanYears = Math.floor(T.spanDays / 365.25);
+
+// ---------- hero
+document.title = D.group;
+$('#h-title').innerHTML = esc(D.group).replace(/(\S+)$/, '<span>$1</span>');
+$('#h-range').textContent = `${shortDate(T.first)} — ${shortDate(T.last)}`;
+$('#h-gen').textContent = 'הדוח המלא';
+$('#h-sub').textContent = `${spanYears} שנים, ${fmt(T.members)} חברים, ${fmt(T.perDay)} הודעות ביום בממוצע. כל מה שנכתב בקבוצה מאז ההודעה הראשונה ועד היום.`;
+$('#h-total').textContent = fmt(T.msgs);
+$('#h-stats').innerHTML = [
+  [fmt(T.words), 'מילים'], [fmt(T.activeDays), 'ימים עם הודעות'], [fmt(T.conversations), 'שיחות נפרדות'],
+  [fmt(T.media), 'תמונות, סרטונים ומדבקות'], [fmt(T.links), 'לינקים'], [fmt(T.emojis), 'אימוג׳ים'],
+].map(([b, s]) => `<div><b>${b}</b><span>${s}</span></div>`).join('');
+
+// all days as one barcode (right = first day)
+let allDays = [];
+{ const start = parseDay(T.first), end = parseDay(T.last);
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    const k = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    allDays.push([k, D.daily[k] || 0]);
+  } }
+const maxDay = Math.max(...allDays.map((d) => d[1]));
+const logMax = Math.log1p(maxDay);
+function drawBarcode() {
+  const cv = $('#barcode'), r = devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+  cv.width = w * r; cv.height = h * r;
+  const g = cv.getContext('2d'); g.scale(r, r);
+  const n = allDays.length, bw = w / n;
+  allDays.forEach(([, c], i) => {
+    const t = Math.log1p(c) / logMax, x = w - (i + 1) * bw, bh = Math.max(2, t * h);
+    g.fillStyle = heat(t * t * 1.05);
+    g.fillRect(x, h - bh, Math.max(bw, 0.6), bh);
+  });
+  cv.onmousemove = (e) => {
+    const rect = cv.getBoundingClientRect(), i = Math.floor((rect.right - e.clientX) / (rect.width / n));
+    const d = allDays[Math.max(0, Math.min(n - 1, i))];
+    showTip(e.clientX, rect.top, `${shortDate(d[0])} · <span class="num">${fmt(d[1])}</span> הודעות`);
+  };
+  cv.onmouseleave = hideTip;
+}
+{ const first = parseDay(T.first).getFullYear(), last = parseDay(T.last).getFullYear(), ys = [];
+  for (let y = first; y <= last; y += (last - first > 8 ? 2 : 1)) ys.push(y);
+  $('#barcode-axis').innerHTML = ys.map((y) => `<span class="num">${y}</span>`).join(''); }
+
+// ---------- calendar
+$('#cal-eyebrow').textContent = `${fmt(T.spanDays)} ימים, ${fmt(T.activeDays)} מהם עם הודעות`;
+const yearList = D.years.map((y) => y.year);
+const calCanvases = [];
+$('#cal').innerHTML = yearList.map((y) => `<div class="cal-year"><div class="y num">${y}</div><canvas data-y="${y}"></canvas></div>`).join('')
+  + `<div class="legend"><span>פחות</span>${[0, .15, .35, .55, .75, 1].map((t) => `<i style="background:${heat(t)}"></i>`).join('')}<span>יותר</span></div>`;
+document.querySelectorAll('#cal canvas').forEach((c) => calCanvases.push(c));
+function drawCal(only, upto = 1) {
+  (only ? [only] : calCanvases).forEach((cv) => {
+    const y = +cv.dataset.y, r = devicePixelRatio || 1, w = cv.clientWidth;
+    const gap = w < 500 ? 1.5 : 2.5, cell = (w - gap * 52) / 53, h = cell * 7 + gap * 6;
+    cv.style.height = h + 'px'; cv.width = w * r; cv.height = h * r;
+    const g = cv.getContext('2d'); g.scale(r, r);
+    const jan1 = new Date(y, 0, 1), off = jan1.getDay(), cells = [];
+    for (let d = new Date(jan1); d.getFullYear() === y; d.setDate(d.getDate() + 1)) {
+      const idx = Math.round((d - jan1) / 864e5) + off, wk = Math.floor(idx / 7), dow = d.getDay();
+      const k = `${y}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      const c = D.daily[k] || 0, x = w - (wk + 1) * cell - wk * gap, yy = dow * (cell + gap);
+      const before = k < T.first || k > T.last;
+      const lit = (idx - off) / 365 <= upto;
+      g.fillStyle = before ? 'rgba(0,0,0,0.035)' : !lit ? 'rgb(255,233,199)' : heat(c ? Math.pow(Math.log1p(c) / logMax, 1.6) : 0);
+      const rr = Math.min(3, cell / 4);
+      g.beginPath(); g.roundRect ? g.roundRect(x, yy, cell, cell, rr) : g.rect(x, yy, cell, cell); g.fill();
+      cells.push({ x, y: yy, k, c, before });
+    }
+    cv.onmousemove = (e) => {
+      const rect = cv.getBoundingClientRect(), mx = e.clientX - rect.left, my = e.clientY - rect.top;
+      const hit = cells.find((q) => mx >= q.x && mx <= q.x + cell && my >= q.y && my <= q.y + cell);
+      if (!hit || hit.before) return hideTip();
+      showTip(e.clientX, e.clientY - 6, `${shortDate(hit.k)} · ${DOW[parseDay(hit.k).getDay()]} · <span class="num">${fmt(hit.c)}</span> הודעות`);
+    };
+    cv.onmouseleave = hideTip;
+  });
+}
+
+// ---------- monthly timeline (RTL: past on the right)
+function drawTimeline() {
+  const months = Object.entries(D.monthly);
+  const W = 1000, H = 300, P = { t: 20, r: 10, b: 28, l: 48 };
+  const max = Math.max(...months.map((m) => m[1]));
+  const step = Math.pow(10, Math.floor(Math.log10(max))) / (max / Math.pow(10, Math.floor(Math.log10(max))) < 3 ? 2 : 1);
+  const top = Math.ceil(max / step) * step;
+  const x = (i) => W - P.r - (i / (months.length - 1)) * (W - P.l - P.r);
+  const y = (v) => H - P.b - (v / top) * (H - P.t - P.b);
+  let grid = '';
+  for (let v = 0; v <= top; v += step) grid += `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="#ecd7b4" stroke-width="1"/><text x="${P.l - 8}" y="${y(v) + 4}" text-anchor="end">${v >= 1000 ? (v / 1000) + 'K' : v}</text>`;
+  const pts = months.map((m, i) => `${x(i).toFixed(1)},${y(m[1]).toFixed(1)}`);
+  const area = `M${x(0)},${y(0)} L${pts.join(' L')} L${x(months.length - 1)},${y(0)} Z`;
+  let ticks = '';
+  months.forEach((m, i) => { if (m[0].endsWith('-01')) ticks += `<line x1="${x(i)}" x2="${x(i)}" y1="${H - P.b}" y2="${H - P.b + 5}" stroke="#b39f97"/><text x="${x(i)}" y="${H - 8}" text-anchor="middle">${m[0].slice(0, 4)}</text>`; });
+  const pk = months.reduce((a, b, i) => (b[1] > months[a][1] ? i : a), 0);
+  const [py, pm] = months[pk][0].split('-').map(Number);
+  $('#tl-lede').textContent = `החודש העמוס ביותר היה ${MONTHS[pm - 1]} ${py}, עם ${fmt(months[pk][1])} הודעות. ממוצע של ${fmt(T.msgs / months.length)} בחודש.`;
+  $('#tl').innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="הודעות בכל חודש">
+    <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff3d68" stop-opacity=".45"/><stop offset="1" stop-color="#ff3d68" stop-opacity="0"/></linearGradient></defs>
+    ${grid}${ticks}<path d="${area}" fill="url(#ga)"/><polyline data-draw points="${pts.join(' ')}" fill="none" stroke="#ff3d68" stroke-width="2" stroke-linejoin="round"/>
+    <circle cx="${x(pk)}" cy="${y(months[pk][1])}" r="5" fill="#c0123f" stroke="#fff3df" stroke-width="2"/>
+    <rect id="tl-hit" x="${P.l}" y="0" width="${W - P.l - P.r}" height="${H}" fill="transparent"/></svg>`;
+  const svg = $('#tl svg');
+  $('#tl-hit').addEventListener('mousemove', (e) => {
+    const r = svg.getBoundingClientRect(), vx = (e.clientX - r.left) / r.width * W;
+    const i = Math.round((W - P.r - vx) / (W - P.l - P.r) * (months.length - 1));
+    const m = months[Math.max(0, Math.min(months.length - 1, i))], [yy, mm] = m[0].split('-').map(Number);
+    showTip(e.clientX, e.clientY - 6, `${MONTHS[mm - 1]} ${yy} · <span class="num">${fmt(m[1])}</span>`);
+  });
+  $('#tl-hit').addEventListener('mouseleave', hideTip);
+}
+drawTimeline();
+
+// ---------- top days
+$('#days').innerHTML = D.topDays.map((d) => {
+  const note = notes[d.date];
+  const dow = ['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'][parseDay(d.date).getDay()];
+  return `<div class="day${note ? ' quiet' : ''}"><div class="d">יום ${dow}, ${longDate(d.date)}</div>
+    <div class="c">${fmt(d.n)}<small>הודעות</small></div>
+    ${note ? `<div class="small muted">${esc(note)}</div>` : `<div class="chips">${d.words.map((w) => `<span class="chip">${esc(w.w)}</span>`).join('')}</div>`}</div>`;
+}).join('');
+
+// ---------- leaderboard
+{ const lead = members[0];
+  $('#who-lede').textContent = `במקום הראשון: ${lead.name}, עם ${fmt(lead.msgs)} הודעות, ${lead.share.toFixed(1)}% מכל מה שנכתב. ${fmt(members.length)} משתתפים מופיעים בטבלה.`;
+  const max = people[0].msgs; let open = false;
+  const render = () => {
+    const list = open ? people : people.slice(0, 15);
+    let rank = 0;
+    $('#board').innerHTML = list.map((p) => {
+      if (!p.ghost) rank++;
+      return `<div class="row${p.ghost ? ' ghost' : ''}"><span class="r num">${p.ghost ? '—' : rank}</span><span class="nm" title="${esc(p.name)}">${esc(p.ghost ? COPY.ghost : p.name)}</span>
+        <span class="bar"><i data-fill style="width:${(p.msgs / max * 100).toFixed(1)}%"></i></span><span class="v num">${fmt(p.msgs)}</span><span class="p num">${p.share.toFixed(1)}%</span></div>`;
+    }).join('');
+    $('#board-more').textContent = open ? 'הצג רק את ה־15 הראשונים' : `הצג את כל ${people.length}`;
+  };
+  $('#board-more').onclick = () => { open = !open; render(); };
+  render(); }
+
+// ---------- starters / closers
+{ $('#open-eyebrow').textContent = `${fmt(T.conversations)} שיחות`;
+  const mk = (key) => { const list = [...members].sort((a, b) => b[key] - a[key]).slice(0, 6), m = list[0][key];
+    return list.map((p) => { const pct = p[key] / T.conversations * 100;
+      return `<div class="mrow"><div><div class="t"><span>${esc(p.name)}</span></div><div class="bar"><i data-fill style="width:${p[key] / m * 100}%"></i></div></div><span class="num">${pct.toFixed(0)}%</span></div>`; }).join(''); };
+  $('#starters').innerHTML = mk('starts'); $('#closers').innerHTML = mk('lastword'); }
+
+// ---------- pace
+{ const fast = members.filter((p) => p.msgs >= SC.fastMin && p.respMedianSec).sort((a, b) => a.respMedianSec - b.respMedianSec).slice(0, 3);
+  const order = [fast[1], fast[0], fast[2]].filter(Boolean), place = { 0: 1, 1: 2, 2: 3 };
+  $('#podium').innerHTML = order.map((p) => { const i = fast.indexOf(p);
+    return `<div class="pod${i === 0 ? ' first' : ''}"><div class="pl">מקום ${place[i]}</div><div class="who">${esc(p.name)}</div><div class="t">${dur(p.respMedianSec)[0]}<small> ${dur(p.respMedianSec)[1]}</small></div></div>`; }).join('');
+  const R = D.records;
+  const tiles = [
+    ['רצף הימים הארוך ביותר', fmt(R.streak.days), 'ימים', `בלי יום אחד שקט, עד ${shortDate(R.streak.end)}`],
+    R.silence && R.silence.days > 1 ? ['השתיקה הארוכה ביותר', fmt(R.silence.days), 'ימים', `בין ${shortDate(R.silence.from)} ל־${shortDate(R.silence.to)}`] : null,
+    ['הזמן בין הודעות', dur(R.medianGapSec)[0], dur(R.medianGapSec)[2], 'בחציון, בין כל הודעה להודעה הבאה'],
+    ['המונולוג הארוך ביותר', fmt(R.monologue.n), 'הודעות ברצף', `${R.monologue.who}, ${shortDate(R.monologue.date)}`],
+    ['היום העמוס ביותר', fmt(R.busiestDay.n), 'הודעות', longDate(R.busiestDay.date)],
+    ['ההודעה הארוכה ביותר', fmt(R.longest.words), 'מילים', `${R.longest.who}, ${shortDate(R.longest.date)}`],
+  ];
+  const hide = new Set(D.hideRecords || []);
+  if (hide.has('silence')) tiles[1] = null;
+  $('#pace-tiles').innerHTML = tiles.filter(Boolean).map(([k, v, u, s]) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}<small>${u}</small></div><div class="s">${esc(s)}</div></div>`).join(''); }
+
+// ---------- clock
+{ const hw = D.hourWeek; // python weekday: 0 = Monday
+  const rows = [6, 0, 1, 2, 3, 4, 5]; // Sunday first
+  const max = Math.max(...hw.flat());
+  let best = [0, 0];
+  hw.forEach((r, d) => r.forEach((v, h) => { if (v > hw[best[0]][best[1]]) best = [d, h]; }));
+  const bestDow = (best[0] + 1) % 7;
+  const dayTotals = rows.map((r) => hw[r].reduce((a, b) => a + b, 0));
+  const topDay = dayTotals.indexOf(Math.max(...dayTotals));
+  const night = hw.reduce((a, r) => a + r.slice(0, 5).reduce((x, y) => x + y, 0), 0);
+  $('#clock-lede').textContent = `השעה הכי עמוסה בשבוע: יום ${['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'][bestDow]} ב־${best[1]}:00. היום העמוס בשבוע הוא ${['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'][topDay]}. ${(night / T.msgs * 100).toFixed(1)}% מההודעות נכתבו בין חצות לחמש בבוקר.`;
+  let html = '<div></div>' + Array.from({ length: 24 }, (_, h) => `<div class="hr">${h}</div>`).join('');
+  rows.forEach((r, i) => { html += `<div class="lab">${DOW[i]}</div>` + hw[r].map((v, h) => `<div class="cell" style="background:${heat(Math.pow(v / max, .8))}" data-t="${DOW[i]} ${h}:00 · ${fmt(v)} הודעות"></div>`).join(''); });
+  $('#clockgrid').innerHTML = html;
+  $('#clockgrid').addEventListener('mousemove', (e) => { const t = e.target.dataset && e.target.dataset.t; t ? showTip(e.clientX, e.clientY - 6, t) : hideTip(); });
+  $('#clockgrid').addEventListener('mouseleave', hideTip); }
+
+// ---------- awards
+{ const pool = members.filter((p) => p.msgs >= SC.awardMin);
+  const txt = (p) => p.msgs - p.media - p.deleted;
+  const best = (f, dir = -1) => [...pool].sort((a, b) => dir * (f(a) - f(b)))[0];
+  const ICON = {
+    mic: '<path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/>',
+    moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    pen: '<path d="M4 20h4L19 9l-4-4L4 16zM14 6l4 4"/>',
+    smile: '<circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>',
+    laugh: '<circle cx="12" cy="12" r="9"/><path d="M7 13h10a5 5 0 0 1-10 0zM8.5 9.5l1.5-1M15.5 9.5 14 8.5"/>',
+    cam: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+    q: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .8-1 1.5V14M12 17h.01"/>',
+    link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
+    flag: '<path d="M5 21V4h11l-2 4 2 4H5"/>',
+    trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+    star: '<path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/>',
+  };
+  const A = [];
+  const add = (ttl, icon, p, why) => p && A.push({ ttl, icon, p, why: why(p) });
+  add('הפה הגדול', 'mic', best((p) => p.msgs), (p) => `${fmt(p.msgs)} הודעות. ${p.share.toFixed(1)}% מכל הקבוצה.`);
+  add('מכונת הצחוקים', 'laugh', best((p) => p.laughsCaused / txt(p)), (p) => `${(p.laughsCaused / txt(p) * 100).toFixed(1)}% מההודעות גררו ״חחח״ תוך 3 דקות.`);
+  add('הכי הרבה חחח', 'smile', best((p) => p.laughs / txt(p)), (p) => `צחוק ב־${(p.laughs / txt(p) * 100).toFixed(1)}% מההודעות. ${fmt(p.laughs)} פעמים בסך הכול.`);
+  add('פרס הרומן', 'pen', best((p) => p.avgWords), (p) => `${p.avgWords} מילים בממוצע להודעה.`);
+  add('הקליע', 'bolt', best((p) => p.respMedianSec || 1e9, 1), (p) => `זמן תגובה חציוני: ${dur(p.respMedianSec)[0]} ${dur(p.respMedianSec)[2]}.`);
+  add('ינשוף הלילה', 'moon', best((p) => p.nightPct), (p) => `${p.nightPct}% מההודעות נכתבו בין חצות לחמש.`);
+  add('השכמה מוקדמת', 'sun', best((p) => p.morningPct), (p) => `${p.morningPct}% מההודעות נכתבו בין חמש לשמונה בבוקר.`);
+  add('פתיחת שיחות', 'flag', best((p) => p.starts / p.msgs), (p) => `${fmt(p.starts)} שיחות נפתחו אחרי שקט של 3 שעות ומעלה.`);
+  add('הגלריה', 'cam', best((p) => p.media / p.msgs), (p) => `${(p.media / p.msgs * 100).toFixed(1)}% מההודעות הן תמונות, סרטונים או מדבקות.`);
+  add('סימני שאלה', 'q', best((p) => p.questions / txt(p)), (p) => `סימן שאלה ב־${(p.questions / txt(p) * 100).toFixed(1)}% מההודעות.`);
+  add('סוכנות הידיעות', 'link', best((p) => p.links / p.msgs), (p) => `${fmt(p.links)} לינקים שותפו.`);
+  add('מעצמת אימוג׳י', 'star', best((p) => p.emojis / txt(p)), (p) => `${(p.emojis / txt(p)).toFixed(2)} אימוג׳ים בממוצע להודעה. האהוב: ${p.topEmojis[0] || ''}`);
+  add('כפתור המחיקה', 'trash', best((p) => p.deleted / p.msgs), (p) => `${fmt(p.deleted)} הודעות נמחקו אחרי השליחה.`);
+  add('הוותק', 'star', best((p) => -parseDay(p.first)), (p) => `בקבוצה מאז ${shortDate(p.first)}.`);
+  $('#awardgrid').innerHTML = A.map((a) => `<div class="award"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[a.icon]}</svg>
+    <div class="ttl">${a.ttl}</div><div class="who">${esc(a.p.name)}</div><div class="why">${esc(a.why)}</div></div>`).join(''); }
+
+// ---------- player cards
+{ const pool = members.filter((p) => p.msgs >= SC.cardMin);
+  let open = false;
+  const fmtResp = (s) => (s == null ? '—' : s < 120 ? `${s}<small style="font-size:12px"> שנ׳</small>` : `${Math.round(s / 60)}<small style="font-size:12px"> דק׳</small>`);
+  const card = (p) => { const rank = members.indexOf(p) + 1, mx = Math.max(...p.hours);
+    const yrs = Object.entries(p.years), topY = yrs.reduce((a, b) => (b[1] > a[1] ? b : a));
+    return `<article class="card"><div class="top"><div><div class="name">${esc(p.name)}</div><div class="since">מאז ${shortDate(p.first)} · השנה הכי פעילה: ${topY[0]}</div></div><div class="rank num">#${rank}</div></div>
+      <div class="stats"><div><b>${fmt(p.msgs)}</b><span>הודעות</span></div><div><b>${p.avgWords}</b><span>מילים להודעה</span></div><div><b>${fmtResp(p.respMedianSec)}</b><span>זמן תגובה</span></div></div>
+      <div><div class="lbl">לפי שעה · שיא ב־${p.peakHour}:00</div><div class="spark">${p.hours.map((v, h) => `<i data-fill="y" class="${h === p.peakHour ? 'pk' : ''}" style="height:${Math.max(3, v / mx * 100)}%"></i>`).join('')}</div></div>
+      <div class="sl"><span>0</span><span>12</span><span>23</span></div>
+      ${p.topEmojis.length ? `<div><div class="lbl">אימוג׳ים</div><div class="emo">${p.topEmojis.slice(0, 5).join(' ')}</div></div>` : ''}
+      ${p.signature.length ? `<div><div class="lbl">מילים מזהות</div><div class="chips">${p.signature.slice(0, 5).map((w) => `<span class="chip">${esc(w.w)}</span>`).join('')}</div></div>` : ''}
+    </article>`; };
+  const render = () => { const q = $('#q').value.trim().toLowerCase();
+    const list = q ? pool.filter((p) => p.name.toLowerCase().includes(q)) : open ? pool : pool.slice(0, 12);
+    $('#cards').innerHTML = list.length ? list.map(card).join('') : '<p class="muted">אין חבר בשם הזה. נסו חלק מהשם.</p>';
+    $('#cards-more').hidden = !!q || pool.length <= 12;
+    $('#cards-more').textContent = open ? 'הצג רק 12' : `הצג את כל ${pool.length} הכרטיסים`; };
+  $('#cards-more').onclick = () => { open = !open; render(); };
+  $('#q').addEventListener('input', render);
+  render(); }
+
+// ---------- words
+{ $('#words-eyebrow').textContent = `${fmt(T.words)} מילים`;
+  const ws = D.words.length ? D.words : [{ w: '—', n: 1 }], mx = ws[0].n, mn = Math.min(ws[ws.length - 1].n, mx - 1 || 1) || 1;
+  const shuffled = ws.map((w, i) => ({ ...w, i })).sort((a, b) => ((a.i * 37) % 11) - ((b.i * 37) % 11));
+  $('#wall').innerHTML = shuffled.map((w) => { const t = (Math.log(w.n) - Math.log(mn)) / (Math.log(mx) - Math.log(mn));
+    return `<span class="${w.i < 6 ? 'hot' : ''}" style="font-size:calc(${(22 + t * 74).toFixed(0)}px * var(--ds, 1));opacity:${(.55 + t * .45).toFixed(2)}" title="${fmt(w.n)}">${esc(w.w)}</span>`; }).join('');
+  $('#years').innerHTML = D.years.map((y) => `<div class="yr"><div class="y num">${y.year}</div>
+    <div class="meta"><b class="num">${fmt(y.msgs)}</b> הודעות<br>${y.top ? `הכי פעיל: ${esc(y.top)}` : ''}</div>
+    <div class="chips">${y.words.map((w) => `<span class="chip">${esc(w.w)}</span>`).join('')}</div></div>`).join(''); }
+
+// ---------- emojis
+$('#emoji-eyebrow').textContent = `${fmt(T.emojis)} אימוג׳ים`;
+if (!D.emojis.length) $('#emoji').hidden = true;
+$('#emojis').innerHTML = D.emojis.slice(0, 24).map((e) => `<div><div class="e">${e.e}</div><div class="n num">${fmt(e.n)}</div></div>`).join('');
+
+// ---------- mood (only when term groups were tracked)
+{ const groups = (D.termGroups || []).filter((g) => g.terms.every((t) => D.terms && D.terms[t]));
+  if (groups.length) {
+    $('#mood').hidden = false;
+    const COLORS = ['#ff3d68', '#1f1235', '#5d4b6b', '#c0123f'];
+    const ys = D.years.map((y) => y.year), per = Object.fromEntries(D.years.map((y) => [y.year, y.msgs]));
+    $('#multiples').innerHTML = groups.map((g) => {
+      const series = g.terms.map((t) => ys.map((y) => (D.terms[t][y] || 0) / per[y] * 10000));
+      const max = Math.max(...series.flat()) * 1.1 || 1, W = 460, H = 200, P = { t: 12, r: 8, b: 24, l: 34 };
+      const x = (i) => W - P.r - i / (ys.length - 1) * (W - P.l - P.r), y = (v) => H - P.b - v / max * (H - P.t - P.b);
+      const lines = series.map((s, k) => `<polyline data-draw points="${s.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(' ')}" fill="none" stroke="${COLORS[k]}" stroke-width="${k ? 1.6 : 2.4}" stroke-linejoin="round"/>`
+        + s.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="9" fill="transparent" data-t="${esc(g.terms[k])} · ${ys[i]} · ${v.toFixed(1)}"/>`).join('')).join('');
+      const yt = [0, max / 2, max].map((v) => `<line x1="${P.l}" x2="${W - P.r}" y1="${y(v)}" y2="${y(v)}" stroke="#ecd7b4"/><text x="${P.l - 6}" y="${y(v) + 4}" text-anchor="end">${v.toFixed(0)}</text>`).join('');
+      const xt = ys.map((yy, i) => (i % 2 === 0 || i === ys.length - 1) ? `<text x="${x(i)}" y="${H - 6}" text-anchor="middle">${String(yy).slice(2)}′</text>` : '').join('');
+      return `<div class="panel chart"><h3 style="font-size:32px;margin-bottom:8px">${esc(g.title)}</h3>
+        <div class="key">${g.terms.map((t, k) => `<span><i style="background:${COLORS[k]}"></i>${esc(t)}</span>`).join('')}</div>
+        <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(g.title)}">${yt}${xt}${lines}</svg></div>`;
+    }).join('');
+    $('#multiples').addEventListener('mousemove', (e) => { const t = e.target.dataset && e.target.dataset.t; t ? showTip(e.clientX, e.clientY - 6, t) : hideTip(); });
+    $('#multiples').addEventListener('mouseleave', hideTip);
+  } }
+
+// ---------- bonds
+$('#bondlist').innerHTML = (D.bonds || []).slice(0, 6).map((b) => `<div class="bond"><div><div class="pp">${esc(b.a)}<i>⇄</i>${esc(b.b)}</div><div class="small muted">${fmt(b.n)} תשובות הדדיות</div></div>
+  <div class="x num">×${b.lift.toFixed(1)}<small>מהצפוי</small></div></div>`).join('');
+$('#pairlist').innerHTML = (D.pairs || []).slice(0, 6).map((b, i) => `<div class="bond"><div><div class="pp">${esc(b.a)}<i>⇄</i>${esc(b.b)}</div><div class="small muted">מקום ${i + 1}</div></div>
+  <div class="x num">${fmt(b.n)}<small>תשובות</small></div></div>`).join('');
+if (!(D.bonds || []).length && !(D.pairs || []).length) $('#bonds').hidden = true;
+
+// ---------- domains (merge sub-domains of the same site)
+{ const merged = {};
+  const ALIAS = { 'youtu.be': 'youtube.com', 'sites.one.co.il': 'one.co.il', 'fb.watch': 'facebook.com', 'x.com': 'twitter.com', 'l.facebook.com': 'facebook.com' };
+  D.domains.forEach((d) => { const k = ALIAS[d.d] || d.d; merged[k] = (merged[k] || 0) + d.n; });
+  const list = Object.entries(merged).sort((a, b) => b[1] - a[1]).slice(0, 8), mx = list.length ? list[0][1] : 1;
+  if (!list.length) $('#sources').hidden = true;
+  $('#src-eyebrow').textContent = `${fmt(T.links)} לינקים`;
+  $('#domains').innerHTML = list.map(([d, n]) => `<div class="mrow"><div><div class="t"><span class="num">${esc(d)}</span></div><div class="bar"><i data-fill style="width:${n / mx * 100}%"></i></div></div><span class="num">${fmt(n)}</span></div>`).join(''); }
+
+$('#foot-gen').textContent = `עודכן ב־${shortDate(D.generated)} · ${fmt(T.msgs)} הודעות · ${fmt(T.allSenders)} שולחים לאורך השנים`;
+
+const redraw = () => { drawBarcode(); drawCal(); };
+redraw();
+
+// ---------- scoreboard motion
+const SB = window.Scoreboard;
+if (SB) {
+  const anim = (dur, step, done) => { const t0 = performance.now(); const f = (t) => { const k = Math.min(1, (t - t0) / dur); step(1 - Math.pow(1 - k, 3)); if (k < 1) requestAnimationFrame(f); else if (done) done(); }; requestAnimationFrame(f); };
+  document.querySelectorAll('.statrow, .bignum, .days, .board, .two, .podium, .tiles, .cards, .years, .emojis, .bonds, #domains, #tl, #multiples, .cal-year').forEach((g) => g.setAttribute('data-group', ''));
+  document.querySelectorAll('.cal-year').forEach((row) => { const cv = row.querySelector('canvas'); row._onEnter = () => anim(900, (k) => drawCal(cv, k), () => drawCal(cv)); });
+  SB.watch(document, { roll: '.bignum .n, .statrow b, .day .c, .row .v, .tile .v, .pod .t, .card .stats b, .bond .x, .emojis .n, .yr .meta b, .mrow > .num' });
+  if (!SB.calm) {
+    // hero barcode sweeps in from the first day
+    const cv = document.querySelector('#barcode'), full = allDays;
+    anim(1400, (k) => { allDays = full.slice(0, Math.max(1, Math.round(full.length * k))).concat(full.slice(Math.round(full.length * k)).map(([d]) => [d, 0])); drawBarcode(); }, () => { allDays = full; drawBarcode(); });
+  }
+}
+let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(redraw, 120); });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+})();
+</script>
+
+</body>
+</html>
